@@ -89,7 +89,7 @@ client.on('messageDelete', message =>{
 	message.guild.channels.find('name','bot-log').send(`A message with the contents: \n\n ${message.cleanContent} \n\n written by ${message.author.username}, was deleted from ${message.channel}`);
 });
 
-var slfunction = require('./utility/Slfunction.js');
+var Slfunction = require('./utility/Slfunction.js');
 let slfunction = new Slfunction(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime, date, ann);
 
 var setSpotlight = function () {

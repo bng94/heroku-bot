@@ -44,9 +44,7 @@ client.on('guildDelete', guild =>{
 	console.log(`I have left ${guild.name} at ${new Date()}!`);
 });
 
-client.on('guildMemberAdd', member=>{
-	const gen = client.channels.find('name','general');
-	
+client.on('guildMemberAdd', member=>{	
 	console.log(`Someone joined ${member.guild.name}!`);
 	setTimeout(function () { gen.send(`Welcome to ${member.guild.name}, ${member.user}!\nEnjoy your stay!`); }, 500);
 });

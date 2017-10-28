@@ -23,7 +23,7 @@ class Slfunction {
 		    }else if(this.date === 1 && (this.aDate === 28 || this.aDate === 29 || this.aDate === 30 || this.aDate ===31 )){
 		    		this.addedTime++;
 		    		this.aDate=this.date;
-		    		client.users.get(process.env.ownerID).send("UPDATE dayDiff and dates NOW"); //send me email to update Code.
+		    		this.client.users.get(process.env.ownerID).send("UPDATE dayDiff and dates NOW"); //send me email to update Code.
 		    		console.log("UPDATE dayDiff and dates NOW");
 		    }
 		    console.log('num is '+`${this.num}`+'\nnew date starts today');
@@ -39,11 +39,11 @@ class Slfunction {
 
 	    if(this.ann == true){
 		    if(this.num === 24 || this.num === 25 || this.num === 26 || this.num === 48 || this.num === 49 || this.num === 50 || this.num === 78 || this.num === 79 || this.num === 80 ){
-				client.channels.find('name','general').send('Current Spotlight is: **'+`${this.currentSpotlight}`+'**\nCastle Wars Spotlight is: **NOW**!');			 		       
+				this.client.channels.find('name','general').send('Current Spotlight is: **'+`${this.currentSpotlight}`+'**\nCastle Wars Spotlight is: **NOW**!');			 		       
 				console.log("It happened");
 			}
 			if(this.cw >= 1 && this.cw <= 3){
-				client.channels.find('name','general').send('Current Spotlight is: **'+`${this.currentSpotlight}`+'**\nCastle Wars Spotlight is in: **'+`${this.cw}`+'** days!\nDon\'t Miss out on the Thaler and Tix Grind!');
+				this.client.channels.find('name','general').send('Current Spotlight is: **'+`${this.currentSpotlight}`+'**\nCastle Wars Spotlight is in: **'+`${this.cw}`+'** days!\nDon\'t Miss out on the Thaler and Tix Grind!');
 			}
 			this.ann = false;
 		}	

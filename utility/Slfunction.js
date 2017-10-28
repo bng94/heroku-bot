@@ -43,7 +43,7 @@ class Slfunction {
 				console.log("It happened");
 			}
 			if(this.cw >= 1 && this.cw <= 3){
-				this.client.channels.find('name','general').send(`Current Spotlight is: **${this.currentSpotlight}**\nCastle Wars Spotlight is in: ** ${this.cw}** days! \n Do not Miss out on the Thaler and Tix Grind!`);
+				this.client.channels.find('name','general').send(`Current Spotlight is: **${this.currentSpotlight}**\nCastle Wars Spotlight is: *${this.cw}**!`);		
 			}
 			this.ann = false;
 		}	

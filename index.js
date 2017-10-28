@@ -22,7 +22,6 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
-
 const gen = client.channels.find('name','general');;
 var oldRDM = -1;
 var oRandom = -1;

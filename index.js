@@ -35,7 +35,6 @@ var date = today.getUTCDate();
 var num = (dayDiff+addedTime) % 81;
 var currentSpotlight = -1;
 var cw;
-var ann = false;
 
 client.on('guildCreate', guild =>{
 	client.channels.find('name','general').send(`I have joined ${guild.name}!`);
@@ -67,7 +66,7 @@ client.on('channelUpdate', (oChannel, nChannel) =>{
 	const ddiff = require('return-deep-diff');
 	console.log(`ddiff(oChannel, nChannel).toString(),Channel Changes for: ${oChannel.name}, a ${oChannel.type} channel \n Old Channel Name: '${oChannel.name}' \n New Channel Name: '${nChannel.name}' 
 		\n Old Channel Topic: '${oChannel.topic}' New Channel Topic: '${nChannel.topic}'`);
-	//nChannel.send(`ddiff(oChannel, nChannel).toString()`);	
+	nChannel.guild.owner.send(`ddiff(oChannel, nChannel).toString()`);	
 	nChannel.guild.owner.send(`Channel Changes for: ${oChannel.name}, a ${oChannel.type} channel in ${oChannel.guild.name} \n Old Channel Name: '${oChannel.name}' \n New Channel Name: '${nChannel.name}' 
 		\n Old Channel Topic: '${oChannel.topic}' New Channel Topic: '${nChannel.topic}'`);	
 });
@@ -77,7 +76,6 @@ client.on('guildMemberRemove', member=>{
 	console.log(`Someone left ${guild.name}!`);
 	gen.send(`Bye ${member.user}. Sorry to see you go mate!`);
 });	
-
 
 client.on('guildMemberUpdate', (oMember, nMember)=>{
 	let guild = nMember.guild.name;
@@ -89,12 +87,15 @@ client.on('messageDelete', message =>{
 });
 
 var Slfunction = require('./utility/Slfunction.js');
-let slfunction = new Slfunction(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime, date, ann);
+let slfunction = new Slfunction(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime, date);
 
+//it will automatically run, once program starts. 
 var setSpotlight = function () {
 	client.setTimeout(runSlcode, 100);
 };
 setSpotlight();
+
+//ensure at reset, the date are updated so, spotlight is accurate to game. 
 function runSlcode(){
 	slfunction.updateDate();
 	aDate = slfunction.slInfo[0];
@@ -103,7 +104,6 @@ function runSlcode(){
 	cw = slfunction.slInfo[3];
 	addedTime = slfunction.slInfo[4]
 	date = slfunction.slInfo[5];
-	ann = slfunction.slInfo[6];
 	var midnight = new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 0, 0, 0, 0) - today;
 	if (midnight < 0) {
     	midnight += 86400000; 
@@ -113,6 +113,7 @@ function runSlcode(){
 
 const prefix = '~';
 
+//Handles messages and return a response once the right message triggers the action.
 client.on('message', message => {
 	//Updated code to use the command folder
 	var str = message.content;
@@ -149,6 +150,7 @@ client.on('message', message => {
 
 	try{
 		let cmdFile = require(`./commands/${command}`);
+		//run all other command with this if statement unless it is "spotlight" as they need different vars
 		if(command != 'spotlight'){
 			cmdFile.run(client, message, args);
 		}else{

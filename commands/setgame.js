@@ -1,6 +1,6 @@
 exports.run = function(client, message, args) {
 	var action = message.content.split(' ').slice(1).join(' ');
-	if(message.author.id === process.env.ownerID){
+	if(message.author.id === parseInt(process.env.ownerID)){
 		client.user.setGame(action);
 	} else{
 		message.channel.send("You do not have permission to invoke this command.")

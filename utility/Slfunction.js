@@ -39,11 +39,11 @@ class Slfunction {
 
 	    if(this.ann == true){
 		    if(this.num === 24 || this.num === 25 || this.num === 26 || this.num === 48 || this.num === 49 || this.num === 50 || this.num === 78 || this.num === 79 || this.num === 80 ){
-				this.client.channels.find('name','general').send('Current Spotlight is: **'+`${this.currentSpotlight}`+'**\nCastle Wars Spotlight is: **NOW**!');			 		       
+				this.client.channels.find('name','general').send(`Current Spotlight is: **${this.currentSpotlight}**\nCastle Wars Spotlight is: **NOW**!`);			 		       
 				console.log("It happened");
 			}
 			if(this.cw >= 1 && this.cw <= 3){
-				this.client.channels.find('name','general').send('Current Spotlight is: **'+`${this.currentSpotlight}`+'**\nCastle Wars Spotlight is in: **'+`${this.cw}`+'** days!\nDon\'t Miss out on the Thaler and Tix Grind!');
+				this.client.channels.find('name','general').send(`Current Spotlight is: **${this.currentSpotlight}**\nCastle Wars Spotlight is in: ** ${this.cw}** days! \n Do not Miss out on the Thaler and Tix Grind!`);
 			}
 			this.ann = false;
 		}	

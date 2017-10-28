@@ -90,7 +90,7 @@ client.on('messageDelete', message =>{
 });
 
 var slfunction = require('./utility/Slfunction.js');
-let slfunction = new slfunction(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime, date, ann);
+let slfunction = new Slfunction(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime, date, ann);
 
 var setSpotlight = function () {
 	client.setTimeout(runSlcode, 100);

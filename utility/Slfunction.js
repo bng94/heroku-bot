@@ -1,4 +1,4 @@
-class Spotlightfunct {
+class Slfunction {
 
 	constructor(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime, date, ann){
 		this.client = client;
@@ -179,12 +179,12 @@ class Spotlightfunct {
 	    }
 	}
 
-	get spotlightInfo(){
+	get slInfo(){
 		return [`${this.aDate}`,`${this.oldDate}`,`${this.currentSpotlight}`,`${this.cw}`,`${this.addedTime}`,`${this.date}`,`${this.ann}`];
 	}
 }
 
-module.exports = Spotlightfunct;
+module.exports = Slfunction;
 
 /*
 

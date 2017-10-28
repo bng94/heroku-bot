@@ -89,7 +89,7 @@ client.on('messageDelete', message =>{
 	message.guild.channels.find('name','bot-log').send(`A message with the contents: \n\n ${message.cleanContent} \n\n written by ${message.author.username}, was deleted from ${message.channel}`);
 });
 
-var slfunction = require('./utility/Spotlightfunct.js');
+var slfunction = require('./utility/Slfunction.js');
 let slfunction = new slfunction(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime, date, ann);
 
 var setSpotlight = function () {
@@ -98,13 +98,13 @@ var setSpotlight = function () {
 setSpotlight();
 function runSlcode(){
 	slfunction.updateDate();
-	aDate = slfunction.spotlightInfo[0];
-	oldDate = slfunction.spotlightInfo[1];
-	currentSpotlight = slfunction.spotlightInfo[2];
-	cw = slfunction.spotlightInfo[3];
-	addedTime = slfunction.spotlightInfo[4]
-	date = slfunction.spotlightInfo[5];
-	ann = slfunction.spotlightInfo[6];
+	aDate = slfunction.slInfo[0];
+	oldDate = slfunction.slInfo[1];
+	currentSpotlight = slfunction.slInfo[2];
+	cw = slfunction.slInfo[3];
+	addedTime = slfunction.slInfo[4]
+	date = slfunction.slInfo[5];
+	ann = slfunction.slInfo[6];
 	var midnight = new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 0, 0, 0, 0) - today;
 	if (midnight < 0) {
     	midnight += 86400000; 

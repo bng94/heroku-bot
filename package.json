@@ -1,0 +1,17 @@
+{
+  "name": "Phoenix King",
+  "version": "2.0",
+  "description": "My own server bot, FireLord Ozai's new name that he called himself as.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brandon Ng",
+  "license": "MIT",
+  "dependencies": {
+    "cleverbot-node": "^0.3.11",
+    "discord.js": "^11.2.1",
+    "moment": "^2.19.1",
+    "return-deep-diff": "^0.2.9"
+  }
+}

@@ -1,7 +1,7 @@
 # Discord-Bot
 A discord js bot I did for fun for my server that I ran with my friends.
 
-This bot is coded using discord.js which is Node.jst and using heroku as its hosted server, to make it run 24/7.
+This bot is coded using discord.js which is Node.js and using heroku as its hosted server.
 
 If you are interested in seeing my bot in action, you are welcome to join my server, **Link will be provided in near future**
 

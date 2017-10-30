@@ -150,6 +150,7 @@ client.on('message', message => {
 		let cmdFile = require(`./commands/${command}`);
 		//run all other command with this if statement unless it is "spotlight" as they need different vars
 		if(command != 'spotlight'){
+			if(command == 'help') { message.react("👍");}
 			cmdFile.run(client, message, args);
 		}else{
 			cmdFile.run(message, cw, currentSpotlight, date, aDate, oldDate, num, addedTime);

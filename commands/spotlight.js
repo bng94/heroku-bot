@@ -4,7 +4,17 @@ exports.run = function(message, cw, currentSpotlight, date, aDate, oldDate, num,
 	console.log(addedTime);
     
     if(cw != -1 && cw != "NOW"){
-		message.channel.send('Current Spotlight is: **'+`${currentSpotlight}`+'**\nCastle Wars Spotlight is in: **'+`${cw}`+'** days!');
+		message.channel.send({embed: {
+				fields: [{
+					name: 'Current Spotight:',
+					value: `${currentSpotlight}`
+				},
+				{
+					name: 'Castle Wars Spotlight:',
+					value: `${cw} days`
+				}]
+			}
+		});
 	}else if(cw === "NOW"){
 		message.channel.send('Current Spotlight is: **'+`${currentSpotlight}`+'**\nCastle Wars Spotlight is: **NOW**!');
 	}

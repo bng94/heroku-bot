@@ -39,7 +39,7 @@ class Slfunction {
 	}
 	//function that sets the current spotlight based off the numbers that corresponds with the spotlight.
 	setCurrentSpotlight(){
-		if(this.num >= 0 && this.num <=2) || (this.num >=51 && this.num <=53)){
+		if((this.num >= 0 && this.num <=2) || (this.num >=51 && this.num <=53)){
 	        this.currentSpotlight = 'Pest Control';
 		} else if ((this.num >= 3 && this.num <= 5) || (this.num >= 54 && this.num <= 56)){
 	        this.urrentSpotlight = 'Soul Wars';

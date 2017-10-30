@@ -155,7 +155,7 @@ client.on('message', message => {
 			cmdFile.run(client, message, args);
 		}else{
 			runSlcode();
-			cmdFile.run(message, cw, currentSpotlight, nextSpotlight date, aDate, oldDate, num, addedTime, timetillnextsl);
+			cmdFile.run(message, cw, currentSpotlight, nextSpotlight, date, aDate, oldDate, num, addedTime, timetillnextsl);
 		}
 	} catch (err){
 		console.log(`Command '${command}' failed`);

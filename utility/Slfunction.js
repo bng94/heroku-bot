@@ -76,10 +76,11 @@ class Slfunction {
 	    }else{
 			this.cw = -1;
 	    }
-
+		console.log(`currentSpotlight is ${this.currentSpotlight} and num is ${this.num}`);
 	}
 
 	get slInfo() {
+		console.log(`currentSpotlight is ${this.currentSpotlight} and num is ${this.num}`);
 		return [`${this.aDate}`,`${this.oldDate}`,`${this.currentSpotlight}`,`${this.cw}`,`${this.addedTime}`,`${this.date}`];
 	}
 

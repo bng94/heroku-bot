@@ -79,35 +79,11 @@ class Slfunction {
 
 	}
 
-	get slinfo() {
+	get slInfo() {
 		return [`${this.aDate}`,`${this.oldDate}`,`${this.currentSpotlight}`,`${this.cw}`,`${this.addedTime}`,`${this.date}`];
 	}
 
 
-/*	var aDate() {
-		return `${this.aDate}`;
-	}
-
-	var oDate() {
-		return `${this.oldDate}`;
-	}
-
-	var cSl(){
-		return `${this.currentSpotlight}`;
-	}
-
-	var cw(){
-		return `${this.cw}`;
-	}
-
-	var aTime() {
-		return `${this.addedTime}`;
-	}
-
-	var date(){
-		return `${this.date}`;
-	}
-*/
 /*	setCurrentSpotlight(){
 
 		if((this.num >= 0 && this.num <=2) || (this.num >=51 && this.num <=53)){

@@ -16,7 +16,17 @@ exports.run = function(message, cw, currentSpotlight, date, aDate, oldDate, num,
 			}
 		});
 	}else if(cw === "NOW"){
-		message.channel.send('Current Spotlight is: **'+`${currentSpotlight}`+'**\nCastle Wars Spotlight is: **NOW**!');
+		message.channel.send({embed: {
+				fields: [{
+					name: 'Current Spotight:',
+					value: `${currentSpotlight}`
+				},
+				{
+					name: 'Castle Wars Spotlight:',
+					value: '**NOW!**'
+				}]
+			}
+		});
 	}
 	console.log('Current Spotlight is: '+`${currentSpotlight}`);
 };

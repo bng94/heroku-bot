@@ -140,8 +140,6 @@ client.on('message', message => {
     	}
     }
 	if(!message.content.startsWith(prefix)) return;
-	
-	console.log("did not return :D")
 	const client = message.client;
 	const args = message.content.split(' ');
 	const command = args.shift().slice(1);
@@ -153,6 +151,7 @@ client.on('message', message => {
 			if(command == 'help') { message.react("👍");}
 			cmdFile.run(client, message, args);
 		}else{
+			runSlcode();
 			cmdFile.run(message, cw, currentSpotlight, date, aDate, oldDate, num, addedTime);
 		}
 	} catch (err){

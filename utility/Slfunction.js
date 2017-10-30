@@ -1,5 +1,4 @@
 class Slfunction {
-
 	constructor(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime, date){
 		this.client = client;
 		this.dayDiff = dayDiff;
@@ -12,7 +11,6 @@ class Slfunction {
 		this.today = new Date(); 
 		this.date = this.today.getUTCDate(); 
 	}
-
 	//updates the dates and ensure that the spotlight is up to date when it turns into a new day.
 	updateDate(){
 		while(this.date != this.aDate){
@@ -37,7 +35,6 @@ class Slfunction {
 		this.setCurrentSpotlight();
 
 	}
-	//function that sets the current spotlight based off the numbers that corresponds with the spotlight.
 	setCurrentSpotlight(){
 		if((this.num >= 0 && this.num <=2) || (this.num >=51 && this.num <=53)){
 	        this.currentSpotlight = 'Pest Control';
@@ -82,14 +79,11 @@ class Slfunction {
 	    }else{
 			this.cw = -1;
 	    }
-	}
 
-	get slInfo(){
-		return [`${this.aDate}`,`${this.oldDate}`,`${this.currentSpotlight}`,`${this.cw}`,`${this.addedTime}`,`${this.date}`];
-		}
+	}	
+	get slInfo() {
+		return [`${this.aDate}`,`${}this.oldDate`,`${this.currentSpotlight}`,`${this.cw}`,`${this.addedTime}`,`${this.date}`];
 	}
-
-	
 }
-
+	
 module.exports = Slfunction;

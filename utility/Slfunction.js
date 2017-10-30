@@ -39,119 +39,35 @@ class Slfunction {
 	}
 	//function that sets the current spotlight based off the numbers that corresponds with the spotlight.
 	setCurrentSpotlight(){
-		try{
-		    switch(this.num) {
-		        case 0:
-		        case 1:
-		        case 2:
-		        case 51:
-		        case 52:  
-		        case 53:
-		            this.currentSpotlight = 'Pest Control';
-		            break;
-		        case 3:
-		        case 4:
-		        case 5:
-		        case 54:
-		        case 55:
-		        case 56:
-		            this.urrentSpotlight = 'Soul Wars';
-		            break;
-		        case 6:
-		        case 7:
-		        case 8:
-		        case 45:
-		        case 46:
-		        case 47:
-		            this.currentSpotlight = 'Fist Of Guthix';
-		            break;
-		        case 9:
-		        case 10:
-		        case 11:
-		        case 39:
-		        case 40:
-		        case 41:
-		            this.currentSpotlight = 'Barbarian Assult';
-		            break;
-		        case 12:
-		        case 13:
-		        case 14:
-		        case 42:
-		        case 43:
-		        case 44:
-		            this.currentSpotlight = 'Conquest';
-		            break;
-		        case 15:
-		        case 16:
-		        case 17:
-		        case 57:
-		        case 58:
-		        case 59:
-		            this.currentSpotlight = 'Fishing Trawler';
-		            break;
-		        case 18:
-		        case 19:
-		        case 20:
-		        case 60:
-		        case 61:
-		        case 62:
-		            this.currentSpotlight = 'Great Orb Project';
-		            break;
-		        case 21:
-		        case 22:
-		        case 23:
-		        case 63:
-		        case 64:
-		        case 65:
-		            this.currentSpotlight = 'Flash Powder Factory';
-		            break;
-		        case 24:
-		        case 25:
-		        case 26:
-		        case 48:
-		        case 49:
-		        case 50:
-		        case 78:
-		        case 79:
-		        case 80:
-		            this.currentSpotlight = 'Castle Wars!';
-		            break;
-		        case 27:
-		        case 28:
-		        case 29:
-		        case 66:
-		        case 67:
-		        case 68:
-		            this.currentSpotlight = 'Stealing Creation';
-		            break;
-		        case 30:
-		        case 32:
-		        case 33:
-		        case 69:
-		        case 70:
-		        case 71:
-		            this.currentSpotlight = 'Cabbage Facepunch Bonanza';
-		            break;
-		        case 33:
-		        case 34:
-		        case 35:
-		        case 72:
-		        case 73:
-		        case 74:
-		            this.currentSpotlight = 'Heist';
-		            break;
-		        case 36:
-		        case 37:
-		        case 38:
-		            this.currentSpotlight = 'Mobilising Armies';
-		            break;
-		        case 75:
-		        case 76:
-		        case 77:
-		            this.currentSpotlight = 'Trouble Brewing';
-		    		break;
-			}
-		}catch (e){
+		if(this.num >= 0 && this.num <=2) || (this.num >=51 && this.num <=53)){
+	        this.currentSpotlight = 'Pest Control';
+		} else if ((this.num >= 3 && this.num <= 5) || (this.num >= 54 && this.num <= 56)){
+	        this.urrentSpotlight = 'Soul Wars';
+		} else if ((this.num >= 6 && this.num <= 8) || (this.num >= 45 && this.num <= 47)){
+	        this.urrentSpotlight = 'Fist Of Guthix';
+		} else if ((this.num >= 9 && this.num <= 11) || (this.num >= 39 && this.num <= 41)){
+	        this.urrentSpotlight = 'Barbarian Assult';
+		} else if ((this.num >= 12 && this.num <= 14) || (this.num >= 42 && this.num <= 44)){
+	        this.urrentSpotlight = 'Conquest';
+		} else if ((this.num >= 15 && this.num <= 17) || (this.num >= 57 && this.num <= 59)){
+	        this.urrentSpotlight = 'Fishing Trawler';
+		} else if ((this.num >= 18 && this.num <= 20) || (this.num >= 60 && this.num <= 62)){
+	        this.urrentSpotlight = 'Great Orb Project';
+		} else if ((this.num >= 21 && this.num <= 23) || (this.num >= 63 && this.num <= 65)){
+	        this.urrentSpotlight = 'Flash Powder Factory';
+		} else if ((this.num >= 24 && this.num <= 26) || (this.num >= 48 && this.num <= 50) || (this.num >= 78 && this.num <= 80)){
+	        this.urrentSpotlight = 'Castle Wars!';
+		} else if ((this.num >= 27 && this.num <= 29) || (this.num >= 66 && this.num <= 68)){
+	        this.urrentSpotlight = 'Stealing Creation';
+		} else if ((this.num >= 30 && this.num <= 32) || (this.num >= 69 && this.num <= 71)){
+	        this.urrentSpotlight = 'Cabbage Facepunch Bonanza';
+		} else if ((this.num >= 33 && this.num <= 35) || (this.num >= 72 && this.num <= 74)){
+	        this.urrentSpotlight = 'Heist';
+		} else if (this.num >= 36 && this.num <= 38){
+	        this.urrentSpotlight = 'Mobilising Armies';
+		} else if (this.num >= 75 && this.num <= 77){
+	        this.urrentSpotlight = 'Trouble Brewing';
+		} else {
 			this.client.users.get(process.env.ownerID).send("~spotlight code error fix! asap"); 
 		}
 
@@ -167,10 +83,13 @@ class Slfunction {
 			this.cw = -1;
 	    }
 	}
-	//returns the vars in an array.
+
 	get slInfo(){
 		return [`${this.aDate}`,`${this.oldDate}`,`${this.currentSpotlight}`,`${this.cw}`,`${this.addedTime}`,`${this.date}`];
+		}
 	}
+
+	
 }
 
 module.exports = Slfunction;

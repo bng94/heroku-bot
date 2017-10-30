@@ -1,16 +1,19 @@
 class Slfunction {
-	constructor(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime){
+	constructor(client, dayDiff, aDate, oldDate, currentSpotlight, nextSpotlight, cw, addedTime, timetillnextsl){
 		this.client = client;
 		this.dayDiff = dayDiff;
 		this.aDate = aDate;
 		this.oldDate = oldDate;
 		this.currentSpotlight = currentSpotlight;
+		this.nextSpotlight = nextSpotlight;
 		this.cw = cw;
 		this.addedTime = addedTime;
 		this.num = (this.dayDiff+this.addedTime) % 81;
 		this.today = new Date(); 
-		this.date = this.today.getUTCDate(); 
+		this.date = this.today.getUTCDate();
+		this.timetillnextsl = timetillnextsl;
 	}
+
 	//updates the dates and ensure that the spotlight is up to date when it turns into a new day.
 	updateDate(){
 		while(this.date != this.aDate){
@@ -26,6 +29,10 @@ class Slfunction {
 		    }
 		    console.log('num is '+`${this.num}`+'\nnew date starts today');
 
+		    this.timetillnextsl--;
+		    if(this.timetillnextsl == 0){
+				this.timetillnextsl = 3;
+			}
 			
 			console.log("dayDiff :"+this.dayDiff+"\nnew dayDiff is: "+(this.dayDiff+this.addedTime)+"\naDate is now: "+this.aDate+"\nOld Date is now: "+this.oldDate+"\n");
 	    }
@@ -33,7 +40,13 @@ class Slfunction {
 		
 		console.log("the current time is "+`${this.today.getUTCHours()}:${this.today.getUTCMinutes()}`);
 		
+		this.number = this.num;
+		this.sl = 'null';
 		this.setCurrentSpotlight();
+		this.currentSpotlight = this.sl;
+		this.number = this.num+3;
+		this.nextSpotlight = this.setCurrentSpotlight();
+		this.nextSpotlight = this.sl;
  		console.log('num is '+`${this.num}`);
 
 		if(this.num<24 && this.num > 0){
@@ -49,43 +62,39 @@ class Slfunction {
 	    }
 	}
 
-	get slInfo() {
-		return [`${this.aDate}`,`${this.oldDate}`,`${this.currentSpotlight}`,`${this.cw}`,`${this.addedTime}`,`${this.date}`];
-	}
-
 
 	setCurrentSpotlight(){
 
-		if((this.num >= 0 && this.num <=2) || (this.num >=51 && this.num <=53)){
-	        this.currentSpotlight = 'Pest Control';
-		} else if ((this.num >= 3 && this.num <= 5) || (this.num >= 54 && this.num <= 56)){
-	        this.currentSpotlight = 'Soul Wars';
-		} else if ((this.num >= 6 && this.num <= 8) || (this.num >= 45 && this.num <= 47)){
-	        this.currentSpotlight = 'Fist Of Guthix';
-		} else if ((this.num >= 9 && this.num <= 11) || (this.num >= 39 && this.num <= 41)){
-	        this.currentSpotlight = 'Barbarian Assult';
-		} else if ((this.num >= 12 && this.num <= 14) || (this.num >= 42 && this.num <= 44)){
-	        this.currentSpotlight = 'Conquest';
-		} else if ((this.num >= 15 && this.num <= 17) || (this.num >= 57 && this.num <= 59)){
-	        this.currentSpotlight = 'Fishing Trawler';
-		} else if ((this.num >= 18 && this.num <= 20) || (this.num >= 60 && this.num <= 62)){
-	        this.currentSpotlight = 'Great Orb Project';
-		} else if ((this.num >= 21 && this.num <= 23) || (this.num >= 63 && this.num <= 65)){
-	        this.currentSpotlight = 'Flash Powder Factory';
-		} else if ((this.num >= 24 && this.num <= 26) || (this.num >= 48 && this.num <= 50) || (this.num >= 78 && this.num <= 80)){
-	        this.currentSpotlight = 'Castle Wars!';
-		} else if ((this.num >= 27 && this.num <= 29) || (this.num >= 66 && this.num <= 68)){
-	        this.currentSpotlight = 'Stealing Creation';
-		} else if ((this.num >= 30 && this.num <= 32) || (this.num >= 69 && this.num <= 71)){
-	        this.currentSpotlight = 'Cabbage Facepunch Bonanza';
-		} else if ((this.num >= 33 && this.num <= 35) || (this.num >= 72 && this.num <= 74)){
-	        this.currentSpotlight = 'Heist';
-		} else if (this.num >= 36 && this.num <= 38){
-	        this.currentSpotlight = 'Mobilising Armies';
-		} else if (this.num >= 75 && this.num <= 77){
-	        this.currentSpotlight = 'Trouble Brewing';
+		if((this.number >= 0 && this.number <=2) || (this.number >=51 && this.number <=53)){
+	        this.sl = 'Pest Control';
+		} else if ((this.number >= 3 && this.number <= 5) || (this.number >= 54 && this.number <= 56)){
+	        this.sl = 'Soul Wars';
+		} else if ((this.number >= 6 && this.number <= 8) || (this.number >= 45 && this.number <= 47)){
+	        this.sl = 'Fist Of Guthix';
+		} else if ((this.number >= 9 && this.number <= 11) || (this.number >= 39 && this.number <= 41)){
+	        this.sl = 'Barbarian Assult';
+		} else if ((this.number >= 12 && this.number <= 14) || (this.number >= 42 && this.number <= 44)){
+	        this.sl = 'Conquest';
+		} else if ((this.number >= 15 && this.number <= 17) || (this.number >= 57 && this.number <= 59)){
+	        this.sl = 'Fishing Trawler';
+		} else if ((this.number >= 18 && this.number <= 20) || (this.number >= 60 && this.number <= 62)){
+	        this.sl = 'Great Orb Project';
+		} else if ((this.number >= 21 && this.number <= 23) || (this.number >= 63 && this.number <= 65)){
+	        this.sl = 'Flash Powder Factory';
+		} else if ((this.number >= 24 && this.number <= 26) || (this.number >= 48 && this.number <= 50) || (this.number >= 78 && this.number <= 80)){
+	        this.sl = 'Castle Wars!';
+		} else if ((this.number >= 27 && this.number <= 29) || (this.number >= 66 && this.number <= 68)){
+	        this.sl = 'Stealing Creation';
+		} else if ((this.number >= 30 && this.number <= 32) || (this.number >= 69 && this.number <= 71)){
+	        this.sl = 'Cabbage Facepunch Bonanza';
+		} else if ((this.number >= 33 && this.number <= 35) || (this.number >= 72 && this.number <= 74)){
+	        this.sl = 'Heist';
+		} else if (this.number >= 36 && this.number <= 38){
+	        this.sl = 'Mobilising Armies';
+		} else if (this.number >= 75 && this.number <= 77){
+	        this.sl = 'Trouble Brewing';
 		} else {
-			this.client.users.get(process.env.ownerID).send("~spotlight code error fix! asap"); 
+			this.client.users.get(this.myID).send("~spotlight code error fix! asap"); 
 		}
 
 		if(this.num<24 && this.num > 0){
@@ -101,6 +110,10 @@ class Slfunction {
 	    }
 	}	
 
+	//returns vars in an array 
+	get slInfo() {
+		return [`${this.aDate}`,`${this.oldDate}`,`${this.currentSpotlight}`,`${this.nextSpotlight}`,`${this.cw}`,`${this.addedTime}`,`${this.timetillnextsl}`];
+	}
 }
 	
 module.exports = Slfunction;

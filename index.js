@@ -33,8 +33,10 @@ var oldDate = 29;
 var today = new Date(); 
 var date = today.getUTCDate(); 
 var num = (dayDiff+addedTime) % 81;
-var currentSpotlight = -1;
+var currentSpotlight;
+var nextSpotlight;
 var cw;
+var timetillnextsl = 1;
 
 client.on('guildCreate', guild =>{
 	client.channels.find('name','general').send(`I have joined ${guild.name}!`);
@@ -85,7 +87,7 @@ client.on('messageDelete', message =>{
 });
 
 var Slfunction = require('./utility/Slfunction.js');
-let slfunction = new Slfunction(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime);
+let slfunction = new Slfunction(client, dayDiff, aDate, oldDate, currentSpotlight, nextSpotlight, cw, addedTime, timetillnextsl);
 
 //it will automatically run, once program starts. 
 var setSpotlight = function () {
@@ -99,8 +101,10 @@ function runSlcode(){
 	aDate = slfunction.slInfo[0];
 	oldDate = slfunction.slInfo[1];
 	currentSpotlight = slfunction.slInfo[2];
-	cw = slfunction.slInfo[3];
-	addedTime = slfunction.slInfo[4]
+	nextSpotlight = slfunction.slInfo[3];
+	cw = slfunction.slInfo[4];
+	addedTime = slfunction.slInfo[5];
+	timetillnextsl = slfunction.slInfo[6]
 	var midnight = new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 0, 0, 0, 0) - today;
 	if (midnight < 0) {
     	midnight += 86400000; 
@@ -151,7 +155,7 @@ client.on('message', message => {
 			cmdFile.run(client, message, args);
 		}else{
 			runSlcode();
-			cmdFile.run(message, cw, currentSpotlight, date, aDate, oldDate, num, addedTime);
+			cmdFile.run(message, cw, currentSpotlight, nextSpotlight date, aDate, oldDate, num, addedTime, timetillnextsl);
 		}
 	} catch (err){
 		console.log(`Command '${command}' failed`);

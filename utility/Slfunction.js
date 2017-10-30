@@ -34,6 +34,7 @@ class Slfunction {
 		console.log("the current time is "+`${this.today.getUTCHours()}:${this.today.getUTCMinutes()}`);
 		
 		this.setCurrentSpotlight();
+ 		console.log('num is '+`${this.num}`);
 
 		if(this.num<24 && this.num > 0){
 	        this.cw = 24-this.num;

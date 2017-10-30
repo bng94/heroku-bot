@@ -85,7 +85,7 @@ client.on('messageDelete', message =>{
 });
 
 var Slfunction = require('./utility/Slfunction.js');
-let slfunction = new Slfunction(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime, date);
+let slfunction = new Slfunction(client, dayDiff, aDate, oldDate, currentSpotlight, cw, addedTime);
 
 //it will automatically run, once program starts. 
 var setSpotlight = function () {
@@ -101,7 +101,6 @@ function runSlcode(){
 	currentSpotlight = slfunction.slInfo[2];
 	cw = slfunction.slInfo[3];
 	addedTime = slfunction.slInfo[4]
-	date = slfunction.slInfo[5];
 	var midnight = new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 0, 0, 0, 0) - today;
 	if (midnight < 0) {
     	midnight += 86400000; 

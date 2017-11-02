@@ -13,8 +13,8 @@ If you are interested in seeing my bot in action, you are welcome to join my ser
 # What is the goal of this Discord-Bot project?
 
 - [x] Start and build my first project(excluding the first duo card game project) outside of class and work on my own using online resources as a guide
-- [x]  Developing a working discord bot for servers to potential uses
-- [x]  Learn a semi new language (as discord.js is coded slightly differently while using node.js)
+- [x] Developing a working discord bot for anyone to use as a bot for their servers
+- [x] Learn a how to code a discord bot
 - [ ] Added in commands to look up data online
 - [ ] Use alias for commands instead of the command file name to run the command
 

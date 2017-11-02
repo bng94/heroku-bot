@@ -1,5 +1,5 @@
-exports.run = function(message, cw, currentSpotlight, nextSpotlight, date, aDate, oldDate, num, addedTime, timetillnextsl) {
-  console.log(`\nCurrent Date: `+date+`\nDate: `+aDate+`\nOld Date: `+oldDate+`\nNum is:`+num);
+exports.run = function(message, cw, currentSpotlight, nextSpotlight, date, aDate, num, addedTime, timetillnextsl) {
+  console.log(`\nCurrent Date: `+date+`\nDate: `+aDate+`\nNum is:`+num);
   console.log(`Today date and a Date difference: `+(aDate-date));
   console.log(`timetillnextsl until next...`);
   console.log(addedTime);
@@ -11,8 +11,8 @@ exports.run = function(message, cw, currentSpotlight, nextSpotlight, date, aDate
           value: `${currentSpotlight}`
         },
         {
-          name: 'Next Spotight:',
-          value: `${nextSpotlight}`+' in '+`${timetillnextsl}`+' days'
+          name: 'Next Spotight in '+`${timetillnextsl}`+' days is:',
+          value: `${nextSpotlight}`
         },
         {
           name: 'Castle Wars Spotlight:',
@@ -27,8 +27,8 @@ exports.run = function(message, cw, currentSpotlight, nextSpotlight, date, aDate
           value: `${currentSpotlight}`
         },
         {
-          name: 'Next Spotight:',
-          value: `${nextSpotlight}`+' in '+`${timetillnextsl}`+' days'
+          name: 'Next Spotight in '+`${timetillnextsl}`+' days is:',
+          value: `${nextSpotlight}`
         },
         {
           name: 'Castle Wars Spotlight:',

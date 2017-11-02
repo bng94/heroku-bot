@@ -1,9 +1,8 @@
 class Slfunction {
-	constructor(client, dayDiff, aDate, oldDate, currentSpotlight, nextSpotlight, cw, addedTime, timetillnextsl){
+	constructor(client, dayDiff, aDate, currentSpotlight, nextSpotlight, cw, addedTime, timetillnextsl){
 		this.client = client;
 		this.dayDiff = dayDiff;
 		this.aDate = aDate;
-		this.oldDate = oldDate;
 		this.currentSpotlight = currentSpotlight;
 		this.nextSpotlight = nextSpotlight;
 		this.cw = cw;
@@ -17,16 +16,13 @@ class Slfunction {
 	//updates the dates and ensure that the spotlight is up to date when it turns into a new day.
 	updateDate(){
 		while(this.date != this.aDate){
-	    	if(this.date > this.aDate){
-		    	this.oldDate=this.aDate;
-	    		this.addedTime++;
-	    		this.aDate++;
-		    }else if(this.date === 1 && (this.aDate === 28 || this.aDate === 29 || this.aDate === 30 || this.aDate ===31 )){
-		    		this.addedTime++;
-		    		this.aDate=this.date;
-		    		this.client.users.get(process.env.ownerID).send("UPDATE dayDiff and dates NOW"); //send me email to update Code.
-		    		console.log("UPDATE dayDiff and dates NOW");
-		    }
+			this.addedTime++;
+
+			if((this.aDate++) != this.date){
+				this.aDate = this.date;
+			}else{
+				this.aDate++;
+			}
 		    console.log('num is '+`${this.num}`+'\nnew date starts today');
 
 		    this.timetillnextsl--;
@@ -112,7 +108,7 @@ class Slfunction {
 
 	//returns vars in an array 
 	get slInfo() {
-		return [`${this.aDate}`,`${this.oldDate}`,`${this.currentSpotlight}`,`${this.nextSpotlight}`,`${this.cw}`,`${this.addedTime}`,`${this.timetillnextsl}`];
+		return [`${this.aDate}`,`${this.currentSpotlight}`,`${this.nextSpotlight}`,`${this.cw}`,`${this.addedTime}`,`${this.timetillnextsl}`];
 	}
 }
 	

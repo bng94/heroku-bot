@@ -28,8 +28,7 @@ var oRandom = -1;
 var oRandice = -1;
 var dayDiff = parseInt(process.env.dayDiff); 
 var addedTime = 0;
-var aDate = 30; 
-var oldDate = 29; 
+var aDate = 2; 
 var today = new Date(); 
 var date = today.getUTCDate(); 
 var num = (dayDiff+addedTime) % 81;
@@ -62,14 +61,13 @@ client.on('channelDelete', channel =>{
 	channel.guild.owner.send(`In ${channel.guild.name}, a ${channel.type} channel by the name of '${channel.name}' and was successfully deleted.`);
 });
 
+/*
 client.on('channelUpdate', (oChannel, nChannel) =>{ 
 	const ddiff = require('return-deep-diff');
-	console.log(`ddiff(oChannel, nChannel).toString(),Channel Changes for: ${oChannel.name}, a ${oChannel.type} channel \n Old Channel Name: '${oChannel.name}' \n New Channel Name: '${nChannel.name}' 
+	console.log(`ddiff(oChannel, nChannel),Channel Changes for: ${oChannel.name}, a ${oChannel.type} channel \n Old Channel Name: '${oChannel.name}' \n New Channel Name: '${nChannel.name}' 
 		\n Old Channel Topic: '${oChannel.topic}' New Channel Topic: '${nChannel.topic}'`);
-	nChannel.guild.owner.send(`ddiff(oChannel, nChannel).toString()`);	
-	nChannel.guild.owner.send(`Channel Changes for: ${oChannel.name}, a ${oChannel.type} channel in ${oChannel.guild.name} \n Old Channel Name: '${oChannel.name}' \n New Channel Name: '${nChannel.name}' 
-		\n Old Channel Topic: '${oChannel.topic}' New Channel Topic: '${nChannel.topic}'`);	
-});
+	nChannel.guild.owner.send(`ddiff(oChannel, nChannel).`);	
+});*/
 
 client.on('guildMemberRemove', member=>{
 	let guild = member.guild;
@@ -87,7 +85,7 @@ client.on('messageDelete', message =>{
 });
 
 var Slfunction = require('./utility/Slfunction.js');
-let slfunction = new Slfunction(client, dayDiff, aDate, oldDate, currentSpotlight, nextSpotlight, cw, addedTime, timetillnextsl);
+let slfunction = new Slfunction(client, dayDiff, aDate, currentSpotlight, nextSpotlight, cw, addedTime, timetillnextsl);
 
 //it will automatically run, once program starts. 
 var setSpotlight = function () {
@@ -99,12 +97,11 @@ setSpotlight();
 function runSlcode(){
 	slfunction.updateDate();
 	aDate = slfunction.slInfo[0];
-	oldDate = slfunction.slInfo[1];
-	currentSpotlight = slfunction.slInfo[2];
-	nextSpotlight = slfunction.slInfo[3];
-	cw = slfunction.slInfo[4];
-	addedTime = slfunction.slInfo[5];
-	timetillnextsl = slfunction.slInfo[6]
+	currentSpotlight = slfunction.slInfo[1];
+	nextSpotlight = slfunction.slInfo[2];
+	cw = slfunction.slInfo[3];
+	addedTime = slfunction.slInfo[4];
+	timetillnextsl = slfunction.slInfo[5]
 	var midnight = new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 0, 0, 0, 0) - today;
 	if (midnight < 0) {
     	midnight += 86400000; 
@@ -151,11 +148,10 @@ client.on('message', message => {
 		let cmdFile = require(`./commands/${command}`);
 		//run all other command with this if statement unless it is "spotlight" as they need different vars
 		if(command != 'spotlight'){
-			if(command == 'help') { message.react("👍");}
 			cmdFile.run(client, message, args);
 		}else{
 			runSlcode();
-			cmdFile.run(message, cw, currentSpotlight, nextSpotlight, date, aDate, oldDate, num, addedTime, timetillnextsl);
+			cmdFile.run(message, cw, currentSpotlight, nextSpotlight, date, aDate, num, addedTime, timetillnextsl);
 		}
 	} catch (err){
 		console.log(`Command '${command}' failed`);

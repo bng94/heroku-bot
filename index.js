@@ -6,12 +6,12 @@
 const Discord = require("discord.js");
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
-// const Enmap = require("enmap");
+const Enmap = require("enmap");
 const client = new Discord.Client();
 require("./modules/functions.js")(client);
 client.config = require("./config.js");
-// client.commands = new Enmap();
-// client.aliases = new Enmap();
+client.commands = new Enmap();
+client.aliases = new Enmap();
 const slFunction = require('./modules/slFunctions.js');
 const moment = require('moment');
 

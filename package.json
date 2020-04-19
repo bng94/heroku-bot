@@ -10,8 +10,9 @@
   "license": "MIT",
   "dependencies": {
     "cleverbot-node": "^0.3.11",
-    "discord.js": "^11.2.1",
-    "moment": "^2.19.1",
+    "discord.js": "^12.2.0",
+    "moment": "^2.24.0",
+    "require-reload": "^0.2.2",
     "return-deep-diff": "^0.2.9"
   }
 }

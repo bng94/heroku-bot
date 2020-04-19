@@ -2,7 +2,7 @@
   "name": "Phoenix_King",
   "version": "2.0.0",
   "description": "My own server bot, FireLord Ozai's new name that he called himself as.",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,6 @@
     "moment-duration-format": "^2.3.2",
     "require-reload": "^0.2.2",
     "return-deep-diff": "^0.2.9"
-  }
+  },
+  "homepage": "https://github.com/ngbrandon1994/heroku-bot"
 }

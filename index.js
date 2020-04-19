@@ -8,54 +8,12 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 // const Enmap = require("enmap");
 const client = new Discord.Client();
-client.config = require("./config.js");
 require("./modules/functions.js")(client);
+client.config = require("./config.js");
 // client.commands = new Enmap();
 // client.aliases = new Enmap();
 const slFunction = require('./modules/slFunctions.js');
 const moment = require('moment');
-
-
-
-// client.on('guildCreate', guild =>{
-// 	client.channels.find('name','general').send(`I have joined ${guild.name}!`);
-// });
-//
-// client.on('guildDelete', guild =>{
-// 	console.log(`I have left ${guild.name} at ${new Date()}!`);
-// });
-//
-// client.on('guildMemberAdd', member=>{
-// 	console.log(`Someone joined ${member.guild.name}!`);
-// 	setTimeout(function () { gen.send(`Welcome to ${member.guild.name}, ${member.user}!\nEnjoy your stay!`); }, 500);
-// });
-//
-// client.on('channelCreate', channel =>{
-// 	if(channel.type == 'dm'){
-// 		return;
-// 	}
-// 	channel.guild.owner.send(`In ${channel.guild.name}, a ${channel.type} channel was created by the name of ${channel.name} and was created ${channel.createdAt} with the ID of ${channel.id}.`);
-// });
-//
-// client.on('channelDelete', channel =>{
-// 	channel.guild.owner.send(`In ${channel.guild.name}, a ${channel.type} channel by the name of '${channel.name}' and was successfully deleted.`);
-// });
-//
-//
-// client.on('guildMemberRemove', member=>{
-// 	let guild = member.guild;
-// 	console.log(`Someone left ${guild.name}!`);
-// 	gen.send(`Bye ${member.user}. Sorry to see you go mate!`);
-// });
-//
-// client.on('guildMemberUpdate', (oMember, nMember)=>{
-// 	let guild = nMember.guild.name;
-// 	console.log(`oMember got new roles`);
-// });
-//
-// client.on('messageDelete', message =>{
-// 	message.guild.channels.find('name','bot-log').send(`A message with the contents: \n\n ${message.cleanContent} \n\n written by ${message.author.username}, was deleted from ${message.channel}`);
-// });
 
 	// if(message.isMentioned(process.env.botID)){
 	// 	const myArray = ['I am a bot, How can I bot you away','Annoy someone else','Shoo!','Grrr!'];
@@ -79,12 +37,12 @@ const moment = require('moment');
   //   	}
   //   }
 
-
 const init = async () => {
+
   // Here we load **commands** into memory, as a collection, so they're accessible
   // here and everywhere else.
   const cmdFiles = await readdir("./commands/");
-  client.log("log", `Loading a total of ${cmdFiles.length} commands.`, 'CMD');
+  client.log("log", `Loading a total of ${cmdFiles.length} commands.`);
   cmdFiles.forEach(file => {
     if (!file.endsWith(".js")) return;
     const response = client.loadCommand(file);
@@ -93,7 +51,7 @@ const init = async () => {
 
   // Then we load events, which will include our message and ready event.
   const evtFiles = await readdir("./events/");
-  client.log("log", `Loading a total of ${evtFiles.length} events.`, 'EVENT');
+  client.log("log", `Loading a total of ${evtFiles.length} events.`);
   evtFiles.forEach(file => {
     const eventName = file.split(".")[0];
     const event = require(`./events/${file}`);
@@ -108,7 +66,11 @@ const init = async () => {
     const thisLevel = client.config.permLevels[i];
     client.levelCache[thisLevel.name] = thisLevel.level;
   }
-  client.login(process.env.token);
+
+  // Here we login the client.
+  client.login(client.config.token);
+
+// End top-level async/await function.
 };
 
 init();

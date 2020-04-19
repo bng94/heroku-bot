@@ -4,7 +4,15 @@
   "description": "My own server bot, FireLord Ozai's new name that he called himself as.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngbrandon1994/heroku-bot.git"
   },
   "author": "Brandon Ng",
   "license": "MIT",
@@ -17,5 +25,5 @@
     "require-reload": "^0.2.2",
     "return-deep-diff": "^0.2.9"
   },
-  "homepage": "https://github.com/ngbrandon1994/heroku-bot"
+  "homepage": "https://github.com/ngbrandon1994/heroku-bot#readme"
 }

@@ -1,6 +1,6 @@
 {
   "name": "Phoenix_King",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "My own server bot, FireLord Ozai's new name that he called himself as.",
   "main": "index.js",
   "scripts": {

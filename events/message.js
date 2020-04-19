@@ -6,10 +6,6 @@ module.exports = (client, message) => {
   // It's good practice to ignore other bots. This also makes your bot ignore itself
   // and not get into a spam loop (we call that "botception").
   if (message.author.bot) return;
-  //logs any message DM to bot.
-  if(message.channel.type == 'dm' && message.author.id != client.config.ownerID){
-    client.log("log", `${message.author.tag} (${message.author.id}) says ${message.content}`, "DM");
-  }
 
   // Grab the settings for this server from the PersistentCollection
   // If there is no guild, get default conf (DMs)
@@ -29,7 +25,7 @@ module.exports = (client, message) => {
   // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
   // command = say
   // args = ["Is", "this", "the", "real", "life?"]
-  const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
+  const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
   // Get the user or member's permission level from the elevation

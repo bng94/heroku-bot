@@ -20,7 +20,6 @@ module.exports = (client) => {
 	currentSpotlight = sl;
 
 	console.log("\nToday Date is "+`${month[today.getUTCMonth()]} ${today.getUTCDate()} ${today.getUTCFullYear()} `+`${today.getUTCHours()}:${(`0`+today.getUTCMinutes()).slice(-2)}`+`\n`);
-	console.log(`Current Spotlight: `+`${currentSpotlight}`);
 
 	var findNextSpotlightCounter = 0;
 	var foundNextSpotlight = false;
@@ -41,19 +40,6 @@ module.exports = (client) => {
 
 	var nextSpotlight = sl;
 
-	console.log(`Next Spotlight: `+`${nextSpotlight}`);
-	console.log(`num is `+`${num}, subdiff is `+`${subDiff}`);
-/*	if(num<24 && num >= 0){
-			cw = 24-num;
-	}else if(num < 48 && num > 24){
-			cw = 48-num;
-	}else if(num < 78 && num > 48){
-			cw = 78-num;
-	}else if(num === 24 || num === 25 || num === 26 || num === 48 || num === 49 || num === 50 || num === 78 || num === 79 || num === 80){
-			cw = "NOW";
-	}else{
-			cw = -1;
-	}*/
 	cw = findTimeToCWsl(num);
 	var afterNextCw = cw+3;
 	if(cw != "NOW"){
@@ -85,8 +71,6 @@ module.exports = (client) => {
 	client.followingCW = followingCW+afterNextCw;
 	client.timetillnextsl = findNextSpotlightCounter;
 
-	console.log("Found next Spotlight in: "+findNextSpotlightCounter);
-	console.log("Next sl in: "+client.timetillnextsl+` days\n`);
 };
 
 function findTimeToCWsl(num){
@@ -134,7 +118,7 @@ function setCurrentSpotlight(client, number, sl){
 		} else if (number >= 75 && number <= 77){
 	        sl = `Trouble Brewing`;
 		} else {
-			client.users.get(client.config.ownerID).send("spotlight code error fix! asap");
+			console.log("spotlight code error fix! asap");
 		}
 
 		return [number, sl];

@@ -15,27 +15,31 @@ client.aliases = new Enmap();
 const slFunction = require('./modules/slFunctions.js');
 const moment = require('moment');
 
-	// if(message.isMentioned(process.env.botID)){
-	// 	const myArray = ['I am a bot, How can I bot you away','Annoy someone else','Shoo!','Grrr!'];
-	// 	var rdm = Math.floor(Math.random() * myArray.length);
-	// 	while(rdm === oldRDM){
-	// 		rdm = Math.floor(Math.random() * myArray.length);
-	// 	}
-	// 	oldRDM = rdm;
-	// 	message.reply(myArray[rdm]);
-	// } else if (newStr.includes("seems legit",0) || newStr.includes("seem legit",0)) {
-	// 	message.channel.send('Seems Legit!');
-	// }else if (!newStr.includes("egg",0) && !newStr.includes("agg",0) && !newStr.includes("rgg",0) && !newStr.includes(".gg",0) && !newStr.includes("sgg",0) && !newStr.includes("igg",0)
-	// 	&& !newStr.includes("ogg",0) && (newStr.includes("gg",0) || newStr.includes(" gg ",0) || newStr.includes("good game",0) || newStr.includes("go0d game",0)
-	// 	|| newStr.includes("g0od game",0))	|| newStr.includes("g00d game",0)) {
-	// 	message.channel.send('Good Game!');
-	// } else if(message.isMentioned(process.env.ownerID)){
-	// 	message.reply('What?');
-	// } else if(message.author.id === process.env.ownerID){
-	// 	if(newStr.search("hey handsome") != -1){
-  //   		message.channel.send("Hey bae");
-  //   	}
-  //   }
+client.timer;
+//it will automatically run, once program starts.
+var runDaily = function () {
+  client.timer = setTimeout(()=>{
+    daily();
+    client.users.get(client.config.ownerID).send("Bot just started up!");
+  }, 2000);
+};
+runDaily();
+
+client.daily = () =>{
+  daily();
+}
+
+//ensure at reset, the date are updated so, spotlight is accurate to game.
+function daily(){
+  slFunction(client);
+  var timeToMidnight;
+
+  timeToMidnight = client.resetTime();
+  console.log('Reset in: '+timeToMidnight+'\n');
+  clearTimeout(client.timer);
+  client.timer = setTimeout(daily, timeToMidnight);
+};
+
 
 const init = async () => {
 

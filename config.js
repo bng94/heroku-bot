@@ -2,7 +2,8 @@ const config = {
   "ownerID": "process.env.ownerID",
   "admins": "process.env.ownerID",
   "support": "process.env.ownerID",
-  "token": "process.env.token",
+  "botID": "process.env.botID",
+  "serverLink": "process.env.serverLink",
   "prefix": "~",
 
   "defaultSettings" : {

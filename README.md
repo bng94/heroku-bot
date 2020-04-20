@@ -3,17 +3,14 @@ A discord js bot I did for fun for my server that I run with my friends.
 
 This bot is coded using discord.js which apart of Node.js and using heroku as its host server.
 
-This bot is intended as a backup bot incase my main server bot crashed and failed to restart despite using `pm2 start index.js`.
-
-My main bot is called Doctor, while this bot is called Master.
-
 If you are interested in seeing my bot in action, you are welcome to join my server,
 [**Link will be provided in near future**](https://github.com/ngbrandon1994/discord-bot)
 
 # What is this Discord-bot project about?
 
- This project is about me learning a how to code and host a bot and running 24/7 for groups of friends on discord. This sub bot of my server bot which is a bot based off another bot that I created bot for a gaming server on discord for a group of people in a clan, which will not be shown due to the sensitive data for that clan. This bot will be running similar commands and also new commands that were not put into the bot used in the gaming server.
-
+ This project is about me learning a how to code and host a bot and running 24/7 for groups of friends on discord. 
+This bot is intended as a backup bot incase my main server bot crashed and failed to restart despite using `pm2 start index.js`.
+My main bot is called Doctor, while this bot is called Master. This bot will be running similar commands if not the same commands, mostly borderline commands that doesn't impact on the hosting server.
 
 # What is the goal of this Discord-Bot project?
 

@@ -1,6 +1,14 @@
-exports.run = function(client, message, args) {
+//Mailbox is an "animal" based off izzy's meme. Returns animal if bot owner is mentioned.
+exports.run = async (client, message, args, level) => {
 	var rand = Math.floor(Math.random() * 3);
-	if((message.mentions.users.size === 1 && (process.env.botID != message.mentions.users.first().id) )){
+
+	if(message.mentions.users.size == 0){
+		return message.channel.send(`You must mention someone!`);
+	}else	if(message.mentions.users.size > 1){
+		return message.channel.send(`You can only mention one user!`);
+	}
+
+	if((client.config.ownerID === message.mentions.users.first().id) || (client.id === message.mentions.users.first().id) && message.mentions.users.size === 1){
 		message.channel.send('**'+`${message.author.username}`+'**: Hey I got a surprise for you, '+`${message.mentions.users.first().username}`
 		+'!\n**'+`${message.mentions.users.first().username}`+'**: Really...? \n**'
 		+`${message.author.username}`+'**: Yeah, a letter\n**'+`${message.mentions.users.first().username}`+'**: A letter? I saw this coming!\n**'
@@ -39,13 +47,14 @@ exports.run = function(client, message, args) {
 
 exports.conf = {
   enabled: true,
-  guildOnly: false,
+  guildOnly: true,
   aliases: [],
-  permLevel: 0
+  permLevel: "User"
 };
 
 exports.help = {
   name: "mailbox",
-  description: "Send a mailbox to someone /sarcasm",
-  usage: "mailbox"
+  category: "Miscellaneous",
+  description: "Send a mailbox to someone...",
+  usage: "mailbox <@user>"
 };

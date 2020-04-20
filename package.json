@@ -1,7 +1,7 @@
 {
-  "name": "Phoenix_King",
+  "name": "The Master",
   "version": "3.0.0",
-  "description": "My own server bot, FireLord Ozai's new name that he called himself as.",
+  "description": "My back-up bot on heroku, for my server, as my server use the bot I called the Doctor from Doctor Who. This bot will be called The Master.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -3,7 +3,7 @@ A discord js bot I did for fun for my server that I run with my friends.
 
 This bot is coded using discord.js which is Node.js and using heroku as its hosted server.
 
-If you are interested in seeing my bot in action, you are welcome to join my server, 
+If you are interested in seeing my bot in action, you are welcome to join my server,
 [**Link will be provided in near future**](https://github.com/ngbrandon1994/discord-bot)
 
 # What is this Discord-bot project about?
@@ -16,7 +16,7 @@ If you are interested in seeing my bot in action, you are welcome to join my ser
 - [x] Developing a working discord bot for anyone to use as a bot for their servers
 - [x] Learn a how to code a discord bot
 - [ ] Added in commands to look up data online
-- [ ] Use alias for commands instead of the command file name to run the command
+- [x] Use alias for commands instead of the command file name to run the command
 
 # How to run and test this bot?
 
@@ -26,14 +26,9 @@ A full guide coming soon...
 
 If you find a problem with the bot, please file an issue.
 
-Please also state how the issue can be reproducted and the expected and unexpected behavior of the bot. If any screenshots please feel free to show it, so the issue can be solved as quickly as possible. 
+Please also state how the issue can be reproducted and the expected and unexpected behavior of the bot. If any screenshots please feel free to show it, so the issue can be solved as quickly as possible.
 
 [Report an Issue](https://github.com/ngbrandon1994/discord-bot/issues/new)
 
 # Credits:
 - This bot is based off [An-Idiots-Guide](https://github.com/An-Idiots-Guide/guidebot)
-
-
-
-
-

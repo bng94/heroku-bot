@@ -7,13 +7,16 @@
 // However it's, like, super ultra useful for troubleshooting and doing stuff
 // you don't want to put in a command.
 exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
+  if(message.author.id !== client.config.ownerID) return; // doubles check to ensure safety.
+  setTimeout(() => {message.delete()}, 30000);
+
   const code = args.join(" ");
   try {
     const evaled = eval(code);
     const clean = await client.clean(client, evaled);
-    message.channel.send(`\`\`\`js\n${clean}\n\`\`\``);
+    message.channel.send(`\`\`\`js\n${clean}\n\`\`\``).then(msg => setTimeout(() => {msg.delete();}, 30000));
   } catch (err) {
-    message.channel.send(`\`ERROR\` \`\`\`xl\n${await client.clean(client, err)}\n\`\`\``);
+    message.channel.send(`\`ERROR\` \`\`\`xl\n${await client.clean(client, err)}\n\`\`\``).then(msg => setTimeout(() => {msg.delete();}, 30000));
   }
 };
 

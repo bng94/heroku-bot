@@ -17,8 +17,34 @@ module.exports = (client, message) => {
   // to the message object, so `message.settings` is accessible.
   message.settings = settings;
 
-  // Also good practice to ignore any message that does not start with our prefix,
-  // which is set in the configuration file.
+  //List of replies to certain phase(s) or word(s) stated by a user.
+  const msg = message.content;
+  msg = msg.toLowerCase;
+  const saying =  {
+    "ayy": "Ayy, lmao!",
+    "wat": "Say what?",
+    "good game": "gg",
+    "legit": "Seems legit"
+  };
+
+  //If you want to see if someone spamming your bot can cause lagg if doing something with it.
+  //not really checking or doing anything with it, just logging it
+  if(message.channel.type === 'dm' && message.author.id != client.config.ownerID){
+    console.log("[DM] from "+message.author+":\n\n"+message.content);
+  }
+  //reply to user if they say something listed in the saying array.
+  //personal preferences
+  if(message.channel.type != 'dm' && saying[msg]){
+    message.channel.send(saying[msg])
+  }
+  //Assuming you are not using @bot as one of the prefixes and as a command to if someone want to @bot to get the list of coammands otherwise you can remove the next 6 lines of code.
+  const regex = new RegExp(`^(<@!?${client.user.id}>)`);
+  if(message.mentions.users.first().id === client.config.botID && message.content.match(regex)){
+    const myArray = ['I am a bot, How can I bot you away','Annoy someone else','Shoo!','Grrr!'];
+  	let rdm = Math.floor(Math.random() * myArray.length);
+  	message.reply(myArray[rdm]);
+  }
+
   if (message.content.indexOf(client.config.prefix) !== 0) return;
 
   // Here we separate our "command" name, and our "arguments" for the command.
@@ -32,7 +58,7 @@ module.exports = (client, message) => {
   const level = client.permlevel(message);
 
   // Check whether the command, or alias, exist in the collections defined
-  // in app.js.
+  // in index.js.
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
   // using this const varName = thing OR otherthign; is a pretty efficient
   // and clean way to grab one of 2 values!

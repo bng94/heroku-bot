@@ -1,7 +1,15 @@
-exports.run = function(client, message, args) {
+//Gives icecream to a user. Return icecream as a gift if its bot owner
+exports.run = async (client, message, args, level) => {
 	const iceArray = [':ice_cream:',':icecream:',':shaved_ice:'];
 	var randice = Math.floor(Math.random() * iceArray.length);
-	if((process.env.botID != message.mentions.users.first().id) && message.mentions.users.size === 1){
+
+	if(message.mentions.users.size == 0){
+		return message.channel.send(`You must mention someone!`);
+	}else if(message.mentions.users.size > 1){
+		return message.channel.send(`You can only mention one user!`);
+	}
+
+	if((client.config.ownerID === message.mentions.users.first().id) && message.mentions.users.size === 1){
 		message.channel.send('**'+`${message.mentions.users.first().username}`+'**, you got '+`${iceArray[randice]}`+' from **'
 			+`${message.author.username}`+'**\n\n**'+`${message.mentions.users.first().username}`+'** gives **'+
 			`${message.author.username}`+'** :icecream: as thanks!');
@@ -15,13 +23,14 @@ exports.run = function(client, message, args) {
 
 exports.conf = {
   enabled: true,
-  guildOnly: false,
+  guildOnly: true,
   aliases: [],
-  permLevel: 0
+  permLevel: "User"
 };
 
 exports.help = {
   name: "icecream",
-  description: "Give someone an icecream /sarcasm",
-  usage: "icecream"
+  category: "Miscellaneous",
+  description: "Give someone an icecream...",
+  usage: "icecream <@user>"
 };

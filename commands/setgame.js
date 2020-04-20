@@ -1,22 +1,21 @@
-exports.run = function(client, message, args) {
-	var action = message.content.split(' ').slice(1).join(' ');
-  var ownerID = process.env.ownerID
-	if(message.author.id === ownerID){
-		client.user.setGame(action);
-	} else{
-		message.channel.send("You do not have permission to invoke this command.")
-	}
+//Set the current activity the bot is 'playing'
+exports.run = async (client, message, args, level) => {
+  if(message.channel.type != "dm") return;
+  var action = message.content.split(' ').slice(1).join(' ');
+  client.user.setActivity(action);
+
 };
 
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: [],
-  permLevel: 4
+  aliases: ['sg', 'setactivity'],
+  permLevel: 10
 };
 
 exports.help = {
   name: "setgame",
-  description: "Playing... /sarcasm",
+  category: "System",
+  description: "Set Activity that the bot is playing.",
   usage: "setgame"
 };

@@ -62,6 +62,17 @@ module.exports = (client) => {
     }
   };
 
+  /*
+  * Return time in ms from subtracting the current time from midnight.
+  */
+  client.resetTime = () => {
+    let today = new Date();
+    let utcToday = new Date(today.getFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds());
+    let midnight = new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+    midnight.setHours(24,0,0);
+    return midnight - utcToday;
+  };
+
 
   /*
   MESSAGE CLEAN FUNCTION

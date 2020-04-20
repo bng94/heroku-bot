@@ -7,7 +7,7 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
   };
 
   var rated = args.join(' ');
-  if(rated.includes(client.config.botID)){
+  if(rated.includes(client.user.id)){
     do{
       number = Math.floor((Math.random()*100)+1);
     }while(number < 75);

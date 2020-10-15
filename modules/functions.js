@@ -62,6 +62,16 @@ module.exports = (client) => {
     }
   };
 
+/**
+ * Usually Sends owner msg, when encounter an error or when bot just restart (if previously used restart cmd or an error crashes)
+ * We using async and await incase, bot just started up and it will take time to collect all the users in the server(s) then find the owner.
+ */
+  client.sendOwnerMsg = async (msg) =>{
+    const owner = await client.users.get(client.config.ownerID);
+		return owner.send(msg);
+  };
+
+
   /*
   * Return time in ms from subtracting the current time from midnight.
   */

@@ -5,21 +5,21 @@ module.exports = (client) => {
 	var cw = "null";
 	var followingCW = "null";
 	var followingCWCounter = 0;
-	var timetillnextsl = -1;
 	var today = new Date();
 	var theDate = new Date(Date.UTC(2015, 4, 18));
-	var oneDay = 1000 * 60 * 60 * 24;
+	const oneDay = 1000 * 60 * 60 * 24;
 	var subDiff = (Math.floor(Math.floor(today - theDate)/oneDay));
 	var num = subDiff % 81;
 	var number = num;
 	var sl = `null`;
-	var month = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
+	const month = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
 	var numSL = setCurrentSpotlight(client, number, sl);
 	number = numSL[0];
 	sl = numSL[1];
 	currentSpotlight = sl;
 
 	console.log("\nToday Date is "+`${month[today.getUTCMonth()]} ${today.getUTCDate()} ${today.getUTCFullYear()} `+`${today.getUTCHours()}:${(`0`+today.getUTCMinutes()).slice(-2)}`+`\n`);
+	console.log(`Current Spotlight: `+`${currentSpotlight}`);
 
 	var findNextSpotlightCounter = 0;
 	var foundNextSpotlight = false;
@@ -62,16 +62,49 @@ module.exports = (client) => {
 		}
 		afterNextCw = 0;
 		followingCW = followingCWCounter;
-		console.log("currently cw spotlight");
+		console.log("Currently it is CW spotlight");
 	}
 
-	client.currentSpotlight = currentSpotlight;
-	client.nextSpotlight = nextSpotlight;
+	client.currentSL = currentSpotlight;
+	client.nextSL = nextSpotlight;
 	client.cw = cw;
 	client.followingCW = followingCW+afterNextCw;
-	client.timetillnextsl = findNextSpotlightCounter;
+	client.timeToNextSL = findNextSpotlightCounter;
 
+	datesForCWsl(client);
+
+	console.log("Next Spotlight in: "+client.timeToNextSL+` days\n`);
 };
+
+function datesForCWsl(client){
+	const monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+	var today = new Date();
+	var cwSlDate = new Date();
+	var cwSlEndDate = new Date();
+	var dateToSL = client.cw;
+
+	if(client.cw === "NOW"){
+		dateToSL = -(2-client.timeToNextSL);
+	}
+	cwSlDate.setDate(today.getDate() + dateToSL);
+	/*
+	 * In standard javscript doing cwSlEndDate.setDate(cwSlDate.getDate() + 2) would not affect cwSlDate date
+	 * ...Right cause it works in w3schools... so confused since (cwSlDate.getDate() + 2) does not affect cwSlDate but got a workaround. For clear view of workaround look at line 37 - 40.
+	*/
+	cwSlEndDate.setDate(today.getDate() +dateToSL+2);
+
+	client.nextCWSLDate = `${monthShort[cwSlDate.getMonth()]}-${cwSlDate.getDate()}-${cwSlDate.getFullYear()} to ${monthShort[cwSlEndDate.getMonth()]}-${cwSlEndDate.getDate()}-${cwSlEndDate.getFullYear()}`;
+
+	var afterCwSlDate = new Date();
+	var afterCwSlEndDate = new Date();
+	afterCwSlDate.setDate(today.getDate() + client.followingCW);
+	afterCwSlEndDate.setDate(today.getDate() + client.followingCW+2);
+
+	client.followingCWSLDate = `${monthShort[afterCwSlDate.getMonth()]}-${afterCwSlDate.getDate()}-${afterCwSlDate.getFullYear()} to ${monthShort[afterCwSlEndDate.getMonth()]}-${afterCwSlEndDate.getDate()}-${afterCwSlEndDate.getFullYear()}`;
+
+	console.log("Next CW Spotlight is on "+client.nextCWSLDate);
+}
 
 function findTimeToCWsl(num){
 	let cWar = -1;
@@ -118,7 +151,12 @@ function setCurrentSpotlight(client, number, sl){
 		} else if (number >= 75 && number <= 77){
 	        sl = `Trouble Brewing`;
 		} else {
-			console.log("spotlight code error fix! asap");
+			/**
+			 * This else statement has never ran
+			 * Incase this code runs, we have this spotlight error msg sent 
+			 * Always check for errors!
+			*/
+			client.sendOwnerMsg("SpotLight Code Crashed! Fix Asap");
 		}
 
 		return [number, sl];

@@ -80,7 +80,7 @@ You can read [Discord Dev Docs](https://discord.com/developers/docs/interactions
 ## ChangeLog
 
 All notable changes to this project will be documented below and may moved into an ChangeLog md if and when this project expands.
-### [2.0.0]  
+### [2.0.0] - 2021-04-19
 * Removed `enmap` and `enmap level` npm packages
 * Installed `dotenv` package to make transitions to online hosting service easier.
 * Installed `module-alias` for absolute path among files.

@@ -3,7 +3,7 @@ A discord js backup bot of my backup bot. Originally was planning to create one 
 
 
 ## Description
-An discord bot that is hosted on heroku and is a generic bot for everyone to download and use. This primarily a backup bot of a bot called "Doctor" on my server and will be planning to make this bot called "Master" in references to the BBC TV Show Doctor Who.
+An discord bot that is hosted on heroku. This primarily a backup bot of a bot called "Doctor" on my server and will be planning to make this bot called "Master" in references to the BBC TV Show Doctor Who. This is a generic bot for everyone to download and use. If there is an handful of people whom fork or give an input to this project, will expand and present more generic features that aren't listed in this backup bot.
 
 ## Usage
 

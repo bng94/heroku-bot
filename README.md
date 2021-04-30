@@ -88,6 +88,8 @@ All notable changes to this project will be documented below and may moved into 
 * Ability to create event files without using those event name as file name.
 * Implemented sub-directories for command folder and used the define sub-directory names as the command category names for the files in their respective directory.
 * Implemented the unofficial setup of DiscordJS slash commands.
+### [2.0.1] - 2021-04-30
+* Added mongoDB connection to bot 
 
 ## Bugs / Support / Suggestions
 

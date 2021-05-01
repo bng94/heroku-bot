@@ -4,9 +4,7 @@
   "description": "The backup discord bot to my backup bot, on heroku.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "preinstall": "npm install pm2 -g", 
-    "start": "pm2-runtime app.js -i max" 
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

@@ -44,25 +44,17 @@ module.exports = (client) => {
   };
 
   client.getUserFromMention = (mention) => {  
-    if (mention.startsWith('<@!') && mention.endsWith('>')) {
-      mention = mention.slice(3, -1);
-      if (mention.startsWith('!')) {
-        mention = mention.slice(1);
-      }
+    const matches = mention.match(/^<@!?(\d+)>$/);
+    // If supplied variable was not a mention or a plain ID #, matches will be null instead of an array.
+    if((mention.length >= 17 && !isNaN(mention)) && !matches){
       return client.users.cache.get(mention);
-      //interactions (slash commands) mentions outputs ID.
-    } else if (mention.startsWith('<@') && mention.endsWith('>')) { 
-      mention = mention.slice(2, -1);
-      if (mention.startsWith('!')) {
-        mention = mention.slice(1);
-      }
-      return client.users.cache.get(mention);
-      //interactions (slash commands) mentions outputs ID.
-    } else if(mention.length >= 17 && !isNaN(mention)){
-      return client.users.cache.get(mention);
-    }
-
-    return false;
+    } else if (!matches) return;
+  
+    // However, the first element in the matches array will be the entire mention, not just the ID,
+    // so use index 1.
+    const id = matches[1];
+  
+    return client.users.cache.get(id);
   };
 
   const checkCommandErrors = (command) => {

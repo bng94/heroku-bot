@@ -3,7 +3,7 @@ A discord js backup bot of my backup bot. Originally was planning to create one 
 
 
 ## Description
-An discord bot that is hosted on heroku and is a generic bot for everyone to download and use. This primarily a backup bot of a bot called "Doctor" on my server and will be planning to make this bot called "Master" in references to the BBC TV Show Doctor Who.
+An discord bot that is hosted on heroku. This primarily a backup bot of a bot called "Doctor" on my server and will be planning to make this bot called "Master" in references to the BBC TV Show Doctor Who. This is a generic bot for everyone to download and use. If there is an handful of people whom fork or give an input to this project, will expand and present more generic features that aren't listed in this backup bot.
 
 ## Usage
 
@@ -76,18 +76,6 @@ slashOptions: [{
 ```
 
 You can read [Discord Dev Docs](https://discord.com/developers/docs/interactions/slash-commands) about Slash Commands and for slash options, refer to [#applicationcommandoption](https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoption) section.
-
-## ChangeLog
-
-All notable changes to this project will be documented below and may moved into an ChangeLog md if and when this project expands.
-### [2.0.0] - 2021-04-19
-* Removed `enmap` and `enmap level` npm packages
-* Installed `dotenv` package to make transitions to online hosting service easier.
-* Installed `module-alias` for absolute path among files.
-* Reformatted all commands and events into more modern format for discordJS bot development style. 
-* Ability to create event files without using those event name as file name.
-* Implemented sub-directories for command folder and used the define sub-directory names as the command category names for the files in their respective directory.
-* Implemented the unofficial setup of DiscordJS slash commands.
 
 ## Bugs / Support / Suggestions
 

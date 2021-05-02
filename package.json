@@ -1,6 +1,6 @@
 {
   "name": "the-master",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "The backup discord bot to my backup bot, on heroku.",
   "main": "index.js",
   "scripts": {
@@ -22,12 +22,14 @@
     "module-alias": "^2.2.2",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
+    "mongoose": "^5.12.7",
     "ms": "^2.1.3"
   },
   "_moduleAliases": {
     "@root": ".",
     "@modules": "./modules",
     "@commands": "./commands",
-    "@events": "./events"
+    "@events": "./events",
+    "@schemas": "./schemas"
   }
 }

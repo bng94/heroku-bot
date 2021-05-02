@@ -43,26 +43,18 @@ module.exports = (client) => {
     }
   };
 
+  /**
+   * Grabs the mentioned user's ID from parameter var and return the user object. If mention is null then return
+   */
   client.getUserFromMention = (mention) => {  
-    if (mention.startsWith('<@!') && mention.endsWith('>')) {
-      mention = mention.slice(3, -1);
-      if (mention.startsWith('!')) {
-        mention = mention.slice(1);
-      }
+    if(!mention) return;
+    const matches = mention.match(/^<@!?(\d+)>$/);
+    if((mention.length >= 17 && !isNaN(mention)) && !matches){
       return client.users.cache.get(mention);
-      //interactions (slash commands) mentions outputs ID.
-    } else if (mention.startsWith('<@') && mention.endsWith('>')) { 
-      mention = mention.slice(2, -1);
-      if (mention.startsWith('!')) {
-        mention = mention.slice(1);
-      }
-      return client.users.cache.get(mention);
-      //interactions (slash commands) mentions outputs ID.
-    } else if(mention.length >= 17 && !isNaN(mention)){
-      return client.users.cache.get(mention);
-    }
-
-    return false;
+    } else if (!matches) return;
+  
+    const id = matches[1];
+    return client.users.cache.get(id);
   };
 
   const checkCommandErrors = (command) => {

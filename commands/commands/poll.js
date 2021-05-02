@@ -11,7 +11,6 @@ module.exports = {
 	execute(message, args, client, level) {
         const array = args.join(" ");
         const split = "/";
-        const basicEmojis = ['👍', '👎'];
         const lettersEmojis = ["🇦","🇧","🇨","🇩","🇪","🇫","🇬","🇭","🇮","🇯"];
 
         let index = array.indexOf(split);
@@ -34,9 +33,11 @@ module.exports = {
             embed.setFooter(`${message.author.tag}`, message.author.displayAvatarURL());
             if(description.length > 2048) return message.reply('Your Description is too long! Max characters is 2048!');
             embed.setDescription(`${description}`);
+            embed.addField(`${lettersEmojis[0]} Yes / Agree`,`\u200b`);
+            embed.addField(`${lettersEmojis[1]} No / Disagree`,`\u200b`);
             message.channel.send(embed).then(msg => {
-                msg.react(basicEmojis[0]);
-                setTimeout(() => { msg.react(basicEmojis[1]) }, 750);
+                msg.react(lettersEmojis[0]);
+                setTimeout(() => { msg.react(lettersEmojis[1]) }, 750);
             });
         } else {
             let answers = [];
@@ -61,15 +62,15 @@ module.exports = {
             if(answers.length < 1 || answers.length > 10) return message.reply(`You must give between 2 and 10 different answer choices!`);
 
             embed.setFooter(`${message.author.tag}`, message.author.displayAvatarURL());
+            if(description.length > 2048) return message.reply('Your Description is too long! Max characters is 2048!');
+            embed.setDescription(`${description}`);
             
             const addTime = 1000;
             let startTime = 0;
 
             for(let i = 0; i<answers.length; i++){
-                description += `\n\n${lettersEmojis[i]}: ${answers[i]}`;
+                embed.addField(`${lettersEmojis[i]} ${answers[i]}`,`\u200b`);
             }
-            if(description.length > 2048) return message.reply('Your Description and answer choices are too long! Max characters is 2048!');
-            embed.setDescription(`${description}`);
             message.channel.send(embed).then(msg => {
                 for(let i = 0; i<answers.length;i++){
                     setTimeout(()=> {

@@ -43,17 +43,17 @@ module.exports = (client) => {
     }
   };
 
+  /**
+   * Grabs the mentioned user's ID from parameter var and return the user object. If mention is null then return
+   */
   client.getUserFromMention = (mention) => {  
+    if(!mention) return;
     const matches = mention.match(/^<@!?(\d+)>$/);
-    // If supplied variable was not a mention or a plain ID #, matches will be null instead of an array.
     if((mention.length >= 17 && !isNaN(mention)) && !matches){
       return client.users.cache.get(mention);
     } else if (!matches) return;
   
-    // However, the first element in the matches array will be the entire mention, not just the ID,
-    // so use index 1.
     const id = matches[1];
-  
     return client.users.cache.get(id);
   };
 

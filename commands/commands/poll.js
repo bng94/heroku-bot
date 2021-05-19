@@ -6,7 +6,7 @@ module.exports = {
     aliases: [],
 	guildOnly: true,
 	permissions: 0,
-    minArgs: 2,
+    minArgs: 1,
 	usage: '<title> / <description> / <OPTIONAL: up to 10 unique answer choices> ',
 	execute(message, args, client, level) {
         const array = args.join(" ");
@@ -33,8 +33,8 @@ module.exports = {
             embed.setFooter(`${message.author.tag}`, message.author.displayAvatarURL());
             if(description.length > 2048) return message.reply('Your Description is too long! Max characters is 2048!');
             embed.setDescription(`${description}`);
-            embed.addField(`${lettersEmojis[0]} Yes / Agree`,`\u200b`);
-            embed.addField(`${lettersEmojis[1]} No / Disagree`,`\u200b`);
+            embed.addField(`${lettersEmojis[0]} Yes`,`\u200b`);
+            embed.addField(`${lettersEmojis[1]} No`,`\u200b`);
             message.channel.send(embed).then(msg => {
                 msg.react(lettersEmojis[0]);
                 setTimeout(() => { msg.react(lettersEmojis[1]) }, 750);

@@ -1,6 +1,6 @@
 {
   "name": "the-master",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "The backup discord bot to my backup bot, on heroku.",
   "main": "index.js",
   "scripts": {

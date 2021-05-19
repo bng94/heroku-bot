@@ -1,5 +1,6 @@
-
+const time = require("@modules/time.js");
 module.exports = (client) => {
+  time(client);
   client.permissionsLevel = (message) => {
       let permLvl = 0;
   

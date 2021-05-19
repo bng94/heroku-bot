@@ -28,6 +28,7 @@
   "_moduleAliases": {
     "@root": ".",
     "@modules": "./modules",
+    "@handlers": "./handlers",
     "@commands": "./commands",
     "@events": "./events",
     "@schemas": "./schemas"

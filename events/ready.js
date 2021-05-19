@@ -15,7 +15,6 @@ module.exports = {
 		await mongo();
 		restartMsg(client);
 		//We need to await here as we are use the variables in this file from the following module for the restart messages.
-		await restartMsg.loadMsg(client);
 
 		const startUpMsg = "Bot just started up!";
 		const afterRestartMsg = "Bot is now back online!";

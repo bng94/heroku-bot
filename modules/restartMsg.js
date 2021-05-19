@@ -20,16 +20,17 @@ module.exports = (client) => {
       }
     )
   }
+  
+  /**
+   * Loads the data from DB, so we can update restart message if bot was restarted from cmd usage.
+   */
+  const loadMsg = async (client) => {
+    const result = await restartSchema.findOne({ _id: client.user.id })
+    client.restartChanID = result.channelId;
+    client.restartMsgID = result.messageId;
+    client.restartChanTypeDM = result.channelTypeDM;
+    client.restartCmdUsage = result.restartCmd;
+    console.log(`Cmd used?: ${client.restartCmdUsage} DM?: ${client.restartChanTypeDM}`);
+  };
+  loadMsg(client);
 };
-
-/**
- * Loads the data from DB, so we can update restart message if bot was restarted from cmd usage.
- */
-module.exports.loadMsg = async (client) => {
-  const result = await restartSchema.findOne({ _id: client.user.id })
-  client.restartChanID = result.channelId;
-  client.restartMsgID = result.messageId;
-  client.restartChanTypeDM = result.channelTypeDM;
-  client.restartCmdUsage = result.restartCmd;
-  console.log(`Cmd used?: ${client.restartCmdUsage} DM?: ${client.restartChanTypeDM}`);
-}

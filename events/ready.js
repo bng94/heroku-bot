@@ -21,7 +21,10 @@ module.exports = {
 
 		if(client.restartChanTypeDM != false){
 			const msg = client.restartCmdUsage ? afterRestartMsg : startUpMsg;
-			client.sendOwnerMsg(msg);
+			//The following code should be used if you aren't using free version of heroku and hosting on your PC or another server/device.
+			//client.sendOwnerMsg(msg);
+			//Since im using heroku for free, this bot restarts frequently on a daily basis, since my bot is running 24/7 and these DM are quite repetitive, so instead will console.log it using our client.log() function from the function.js file.
+			client.log(msg, `LOGIN MSG`, 'READY');
 		} else {
 			const channel = await client.channels.cache.get(client.restartChanID)
 			const fetchedMsg = await channel.messages.fetch(client.restartMsgID);

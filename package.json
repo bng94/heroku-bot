@@ -3,8 +3,12 @@
   "version": "3.0.0",
   "description": "The backup discord bot to my backup bot, on heroku.",
   "main": "index.js",
+  "engines": {
+    "node": "16.13"  
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

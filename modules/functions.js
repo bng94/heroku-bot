@@ -82,15 +82,6 @@ module.exports = (client) => {
     return error;
   };
 
-  //Accessible only in this file
-  const getApp = (guildId) => {
-    const app = client.api.applications(process.env.botID)
-    if (guildId) {
-      app.guilds(guildId)
-    }
-    return app
-  }
-
   client.loadCommand = (file, folder, reloaded = false) => {
     try {
       const command = require(`@commands/${folder}/${file}`);
@@ -116,28 +107,6 @@ module.exports = (client) => {
           });
       }
       
-      if(command.slash === true) {
-        let guildId = '';
-        if(command.guildOnly) guildId = process.env.serverID;
-        if(command.slashOptions){
-          getApp(guildId).commands.post({
-            data: {
-              name: command.name,
-              description: command.description,
-              options: command.slashOptions
-            },
-          })
-        } else {
-          getApp(guildId).commands.post({
-            data: {
-              name: command.name,
-              description: command.description,
-            },
-          })
-        }
-        //client.log(`Loading Slash Command: ${command.name}.`, `CMD`);
-      }
-
       if(reloaded) client.log(`Loading Command: ${file}. 👌`, 'CMD');
       return false;
     } catch (e) {

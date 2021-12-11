@@ -9,26 +9,38 @@ module.exports = {
 	slash: true,
     minArgs: 0, 
     usage: '',
-	execute(message, args, client) {
-		let cw = client.cw;
-        if(cw != "NOW"){
-            cw=cw+` days`;
-        }
-
-        let embed = new Discord.MessageEmbed()
-            .setTimestamp()
-            .addField(`Castle Wars Spotlight in ${cw}`,`${client.nextCWSLDate}`)
-            .addField(`Following Castle Wars Spotlight in ${client.followingCW} days`,`${client.followingCWSLDate}`);
-
+	execute(message, args, client, level) {
         try{
-
-            if(message){
-                embed.setAuthor(`${message.author.username}#${message.author.discriminator}`, `${message.author.displayAvatarURL()}`)
-                return message.channel.send({embed});
-            }
-            return embed;
+            const embed = spotlightEmbed(client);
+            return message.channel.send({embeds: [embed]});
         }catch(e){
             client.log(e, true);
         }
 	},
+    async interactionReply(interaction, client) {
+        const embed = spotlightEmbed(client);
+        await interaction.reply({
+            embeds: [embed],
+        })
+    }  
 };
+
+const spotlightEmbed = (client) => {
+    let cw = client.cw;
+    if(cw != "NOW"){
+        cw=cw+` days`;
+    }
+
+    const embed = new Discord.MessageEmbed()
+        .setTimestamp()
+        .setDescription(`Castle Wars Spotlights Dates`)
+        .addFields([{
+            name: `Next Spotlight in ${cw}`,
+            value: `${client.nextCWSLDate}`
+        }, {
+            name: `Following Spotlight in ${client.followingCW} days`,
+            value: `${client.followingCWSLDate}`
+        }]);
+    return embed;
+
+}

@@ -8,10 +8,29 @@ module.exports = {
     category: directory,
     aliases: [],
 	guildOnly: true,
+	slash: true,
 	permissions: 0,
 	minArgs: 0, 
 	usage: '',
-	execute(message, args, client) {
-		fetch(`https://nekos.life/api/v2/img/neko`).then(res => res.json()).then(body => message.channel.send({ files: [body.url] }).catch(console.error));
+	async execute(message) {
+		const fileUrl = await apiCall();
+		return message.channel.send({ files: [fileUrl] }).catch(console.error);
 	},
+	async interactionReply(interaction) {
+		const fileUrl = await apiCall();
+		return await interaction.reply({
+			files: [fileUrl],
+			ephemeral: true
+		});
+	}
 };
+
+/**
+ * create a method to call the neko API, so no duplicate code for the two 
+ * function call for slash and regular cmd
+ */
+const apiCall = async () => {
+	const response = await fetch(`https://nekos.life/api/v2/img/neko`);
+	const data = await response.json();
+	return data.url;
+}

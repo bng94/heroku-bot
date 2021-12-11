@@ -7,10 +7,18 @@ module.exports = {
 	slash: true,
 	minArgs: 0, 
 	usage: '',
-	execute(message, args, client) {
-		if(message){
-			return message.channel.send('Pong.');
-		}
-		return `Pong!`;
+	execute(message, args, client, level) {
+		message.channel.send('Calculating...').then((resultMessage) => {
+			const ping = resultMessage.createdTimestamp - message.createdTimestamp
+
+			resultMessage.edit(`Bot latency: ${ping}, API Latency: ${client.ws.ping}`)
+		});
 	},
+	async interactionReply(interaction, client) {
+		await interaction.deferReply();
+		await client.wait(3000);
+		await interaction.editReply({
+			content: 'Pong'
+		});
+	}
 };

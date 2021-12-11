@@ -34,7 +34,7 @@ Every command contains the following:
 * (OPTIONAL) guildOnly - set true if its an guild only command.
 * usage - define what the arguments should be if any. If none define it as: `usage: ''`
 * execute - the functionality of the command.
-
+* interactionReply - if slash cmds, this is the reply of the slash cmds.
 #### Example:
 ```JavaScript
 module.exports = {
@@ -59,6 +59,11 @@ You can create slash commands by adding `slash: true` into your cmd file.
 name: 'ping',
 description: 'Ping Pong Command!',
 slash: true,
+async interactionReply(interaction) {
+	await interaction.reply({
+		content: 'Pong!'
+	});
+}
 ```
 
 If you want to use slash command options then add this into your command file:

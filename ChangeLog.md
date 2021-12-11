@@ -1,6 +1,13 @@
 # ChangeLog
 All notable changes to this project will be documented below.
 
+### [3.0.0] - 2021-05-19
+* Updated to DiscordJS v13.3.1
+* Implemented new way to declare client,
+* Re-did registering slash commands and their replies for v13 format
+* Updated mmessage event to messageCreate event.
+* Updated hugs and ping cmd for new slash cmd method.
+* Turned neko cmd into slash cmd for epherual example.
 ### [2.2.0] - 2021-05-19
 * Created handlers folder for loading commands, events and modules.
 * Added `@handlers`, module-alias for handlers folder to package.json.

@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports = {
-	name: 'message',
+	name: 'messageCreate',
 	execute(message, client) {
         prefix = client.config.prefix;
         if(message.author.bot) return;

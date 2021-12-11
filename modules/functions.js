@@ -49,7 +49,7 @@ module.exports = (client) => {
    */
   client.getUserFromMention = (mention) => {  
     if(!mention) return;
-    const matches = mention.match(/^<@!?(\d+)>$/);
+    const matches = mention.toString().match(/^<@!?(\d+)>$/);
     if((mention.length >= 17 && !isNaN(mention)) && !matches){
       return client.users.cache.get(mention);
     } else if (!matches) return;

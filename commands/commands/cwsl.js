@@ -42,5 +42,4 @@ const spotlightEmbed = (client) => {
             value: `${client.followingCWSLDate}`
         }]);
     return embed;
-
 }

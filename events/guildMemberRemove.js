@@ -14,9 +14,11 @@ module.exports = {
             .setTimestamp()
             .setFooter(`User Left`);
         try {
-            memberLog.send(embed);
+            memberLog.send({
+                embeds: [embed]
+            });;
         } catch(e) {
-            memberLog.send({embed: {
+            memberLog.send({embeds: {
                 color: 12589339,
                 author: {
                     name: `${member.user.tag} (${member.user.id})`,

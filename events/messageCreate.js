@@ -31,7 +31,9 @@ module.exports = {
               .setDescription(`You do not have permission to use this command.
             Your permission level is ${level} (${client.config.permissions.find(l => l.level === level).name}). \nThis command requires level ${client.config.permissions.find(l => l.level === cmd.permissions).name} (${cmd.permissions})`);
           try{
-            return message.channel.send({embed});
+            return message.channel.send({ 
+              embeds: [embed]
+            });
           }catch(e){
             console.log(e);
             return message.channel.send(`You do not have permission to use this command.

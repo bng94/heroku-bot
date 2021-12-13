@@ -16,7 +16,9 @@ module.exports = {
                 .setTimestamp()
                 .addField("Account created At", `${client.users.cache.find(x => x.id === member.user.id).createdAt.toString()}`)
                 .setFooter(`User Joined`);
-                memberLog.send({embed});
+                memberLog.send({ 
+          embeds: [embed]
+        });
             },500);
           }catch(e){
             client.log(e);

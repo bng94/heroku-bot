@@ -35,7 +35,9 @@ module.exports = {
             embed.setDescription(`${description}`);
             embed.addField(`${lettersEmojis[0]} Yes`,`\u200b`);
             embed.addField(`${lettersEmojis[1]} No`,`\u200b`);
-            message.channel.send(embed).then(msg => {
+            message.channel.send({
+        embeds: [embed]
+      });.then(msg => {
                 msg.react(lettersEmojis[0]);
                 setTimeout(() => { msg.react(lettersEmojis[1]) }, 750);
             });
@@ -71,7 +73,9 @@ module.exports = {
             for(let i = 0; i<answers.length; i++){
                 embed.addField(`${lettersEmojis[i]} ${answers[i]}`,`\u200b`);
             }
-            message.channel.send(embed).then(msg => {
+            message.channel.send({
+        embeds: [embed]
+      });.then(msg => {
                 for(let i = 0; i<answers.length;i++){
                     setTimeout(()=> {
                         msg.react(lettersEmojis[i])

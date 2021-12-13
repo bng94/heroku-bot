@@ -50,7 +50,9 @@ module.exports = {
     }
   
     try{
-        modLog.send(embed);
+        modLog.send({
+        embeds: [embed]
+      });;
     }catch(e){
         client.log(e,true);
     }

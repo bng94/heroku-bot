@@ -22,7 +22,9 @@ module.exports = {
         .addField(`My Server:`,process.env.serverLink,true);
     
       try{
-        message.channel.send({embed});
+        return message.channel.send({ 
+          embeds: [embed]
+        });
       }catch(e){
         console.log(e);
       }

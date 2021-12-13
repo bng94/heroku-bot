@@ -24,6 +24,8 @@ module.exports = {
             embed.setImage(attachment[0].proxyURL);
         }
     
-        logChannel.send(embed).catch((e)=> client.log(e, true));
+        logChannel.send({
+        embeds: [embed]
+      });.catch((e)=> client.log(e, true));
     },
 };

@@ -30,7 +30,9 @@ module.exports = {
         }
     
         try{
-            message.channel.send({embed});
+            return message.channel.send({ 
+              embeds: [embed]
+            });
         }catch(e){
             client.log(e, true);
             message.channel.send("Embed has failed...");

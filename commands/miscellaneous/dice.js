@@ -17,6 +17,8 @@ module.exports = {
         .setTimestamp()
         .setTitle(`You rolled a die!`)
         .setDescription(`Landed on: `+dieResult);
-        return message.channel.send(embed);
+        return message.channel.send({
+        embeds: [embed]
+      });;
     },
 };

@@ -28,6 +28,8 @@ module.exports = {
       .addField(`User ID:`, user.id, true)
       .addField(`Action:`,`Kick`,true)
       .addField(`Reason:`, reason, true);
-    modLog.send(embed);
+    modLog.send({
+        embeds: [embed]
+      });;
 	},
 };

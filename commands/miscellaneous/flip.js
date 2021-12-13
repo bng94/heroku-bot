@@ -14,6 +14,8 @@ module.exports = {
         .setTimestamp()
         .setTitle(`You tossed a coin!`)
         .setDescription(`Landed on: ${flipResult}`);
-      return message.channel.send(embed);
+      return message.channel.send({
+        embeds: [embed]
+      });;
     },
 };

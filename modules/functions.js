@@ -169,5 +169,7 @@ module.exports = (client) => {
     return this[Math.floor(Math.random() * this.length)]
   };
   
-    
+  process.on('unhandledRejection', error => {
+    console.error('Unhandled promise rejection:', error);
+  });
 };

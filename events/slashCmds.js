@@ -30,13 +30,22 @@ module.exports = {
         */
         const slashCmds = cmds.filter((cmd) => cmd.slash === true);
 
+        //creates an array of the slashCmds Object
+        let cmdArray = [...slashCmds.values()];
+
         //we loop through all slash cmds we've set and create them.
-        for(let cmd in slashCmds){
-            commands?.create({
+        for (const cmd of cmdArray) { 
+            let tempObj = {
                 name: cmd.name,
-                description: cmd.description,
-                options: cmd.slashOptions ? cmd.slashCmds : '',
-            })
-        }
+                description: cmd.description
+            }
+
+            //Ensure we run into no errors if we have no slash options.
+            if(cmd.slashOptions){
+                tempObj = {...tempObj, options: cmd.slashOptions}
+            }
+
+            commands?.create(tempObj);
+        } 
 	},
 };

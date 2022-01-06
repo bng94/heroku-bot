@@ -8,64 +8,66 @@ module.exports = {
     usage: '<command name>',
 	execute(message, args, client, level) {
         const data = [];
-		prefix = client.config.prefix;
+		const prefix = client.config.prefix;
 
-        const commands = client.commands.filter(function(cmd){ 
-            if (cmd.permissions <= level) return cmd 
-        });
+        const commands = client.commands.filter(cmd => cmd.permissions <= level);
         const commandNames = commands.map(cmd => cmd.name);
         const longestName = commandNames.reduce(function (a, b) {
             return a.length > b.length ? a : b;
         });
         const longestLength = longestName.length;
         const sorted = commands.sort((p, c) => p.category > c.category ? 1 :  p.name > c.name && p.category === c.category ? 1 : -1 );
+        let category = '';
+        let index = -1;
+        sorted.map(command => {
+            let temp = {
+                category: '',
+                commands: []
+            }
+            if (!category || category != command.category) {
+                category = command.category;
+                temp = {...temp, category };
+                data.push(temp);
+            } 
+
+            index = data.findIndex(element => element.category === category);
+            temp = data[index];
+            
+            temp.commands.push({
+                name: `${prefix}${command.name}`,
+                description: `${command.description}`
+            });
+            data[index] = temp;
+        });
 
         if (!args.length) {
             message.react("👍");
-            data.push('Here\'s a list of all my commands:');
-            let category;
-            data.push(sorted.map(command => {
-                let response = "";
-                if (!category || category != command.category) {
-                    category = command.category;
-                    categoryChanged = true; 
-                } else {
-                    categoryChanged = false;
-                }
 
-                if(categoryChanged) response += `\n===== ${category} =====\n`;
-                response += `${prefix}${command.name}${" ".repeat(longestLength - command.name.length)} :: ${command.description}`;
-                return response;
-            }).join("\n"));
-            data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
-
-            return message.author.send(data, { 
-                split: true, 
-                code:"asciidoc" 
-            }).then(() => {
-                if (message.channel.type === 'dm') return;
-                message.reply('I\'ve sent you a DM with all my commands!');
+            return data.map(res => {
+                let res_string = `\n===== ${res.category} =====\n\n`;
+                res_string += res.commands.map(cmd => `${cmd.name} :: ${cmd.description}`).join('\n');
+                return message.author.send(res_string);
             })
-            .catch(error => {
-                console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
-                message.reply('it seems like I can\'t DM you! Do you have DMs disabled?');
-            });
         }
+        message.react("👌");
 
         const name = args[0].toLowerCase();
         const command = commands.find(cmd => cmd.name === name || cmd.aliases === name);
         if (!command) {
             return message.reply('that\'s not a valid command!');
         }
-        data.push(`**Category:** ${command.category}`);
-        data.push(`**Name:** ${command.name}`);
+        let response = [];
+        response.push(`**Name:** ${command.name.toProperCase()}`);
 
-        if (command.aliases.length) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
-        if (command.description) data.push(`**Description:** ${command.description}`);
-        if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
+        if (command.aliases.length) response.push(`**Aliases:** ${command.aliases.join(', ')}`);
+        response.push(`**Category:** ${command.category}`);
+        if (command.description) response.push(`**Description:** ${command.description}`);
+        if (command.usage) response.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
+        response.push(`**Slash:** ${command.slash ? `True` : `False`}`);
+        response.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
 
-        data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
+        let content = response.join('\n');
 
-        message.channel.send(data, { split: true });
+        return message.channel.send({ content: content }).catch(error => console.log(error));
 	},
 };

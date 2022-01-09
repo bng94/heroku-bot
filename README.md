@@ -14,6 +14,7 @@ You can run the bot using command line with one of the two commands listed:
 *Recommended to use pm2 start if you want the bot to run 24/7, and restart if it crashes or encounters a bug. Also able to restarts upon using the restart command*
 
 Environment variables in your `.env` file :
+(`.env` should is never public information, as its your tokens and other important informations, make sure not to import and have a .gitignore so you don't accident upload the file to github)
 * process.env.TOKEN = your bot token
 * process.env.ownerID = your own discord user ID
 * process.env.serverLink = your own discord server invite link
@@ -80,7 +81,7 @@ slashOptions: [{
 }],
 ```
 
-You can read [Discord Dev Docs](https://discord.com/developers/docs/interactions/slash-commands) about Slash Commands and for slash options, refer to [#applicationcommandoption](https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoption) section.
+You can read [Discord Dev Docs](https://discord.com/developers/docs/interactions/slash-commands) about Slash Commands and for slash options, refer to [#applicationcommandoption](https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type) section.
 
 ## Bugs / Support / Suggestions
 

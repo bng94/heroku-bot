@@ -9,13 +9,11 @@ module.exports = {
         if (nMessage.author.bot) return; // Do nothing if the message edited was from a bot.
         if(nMessage.content === oMessage.content) return; // Do nothing if the message is the same
         //let createdAt = moment(nMessage.createdAt).format('ddd LLL [GMT+0]');
-    
-        let today = new Date().toUTCString();
-    
+        
         const embed = new Discord.MessageEmbed()
         .setColor(0xfffe1f)
         .setTitle(`Message Edited`)
-        .setTimestamp(today);
+        .setTimestamp();
         //.setFooter(`Message Created At: ${createdAt}`);
     
         embed.setDescription(`**Author:** ${nMessage.author} (${nMessage.author.id})\n**Channel:** ${nMessage.channel}`).addField(`Before:`,oMessage).addField(`After:`,nMessage);
@@ -26,6 +24,6 @@ module.exports = {
     
         logChannel.send({
         embeds: [embed]
-      });.catch((e)=> client.log(e, true));
+      }).catch((e)=> client.log(e, true));
     },
 };

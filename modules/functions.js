@@ -1,14 +1,14 @@
 const time = require("@modules/time.js");
 module.exports = (client) => {
   time(client);
-  client.getPermissionsLevel = ({ author, user, channel, guild, guildMember }) => {
+  client.getPermissionsLevel = ({ author, user, channel, guild, member }) => {
       let permLvl = 0;
       const currentUser = author || user;
       const permOrder = client.config.permissions.slice(0).sort((p, c) => p.level < c.level ? 1 : -1);
   
       while (permOrder.length) {
         const currentLevel = permOrder.shift();
-        if (currentLevel.check(currentUser, channel, guild, guildMember)) {
+        if (currentLevel.check(currentUser, channel, guild, member)) {
           permLvl = currentLevel.level;
           break;
         }

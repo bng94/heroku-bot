@@ -18,11 +18,10 @@ module.exports = {
     
         // let createdAt = moment(message.createdAt).format('ddd LLL [GMT+0]');
     
-        let today = new Date().toUTCString();
         const embed = new Discord.MessageEmbed()
         .setColor(0xff1900)
         .setTitle(`Message Deleted`)
-        .setTimestamp(today);
+        .setTimestamp();
         //.setFooter(`Message Created At: ${createdAt}`);
         embed.setDescription(`**Author:** ${message.author} (${message.author.id})\n**Channel:** ${message.channel} \n**Content:** ${message.content}`);
         if (message.attachments.size > 0) {
@@ -31,6 +30,6 @@ module.exports = {
         }
         logChannel.send({
         embeds: [embed]
-      });.catch((e)=> client.log(e, true));
+      }).catch((e)=> client.log(e, true));
     },
 };

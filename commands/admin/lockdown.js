@@ -25,9 +25,19 @@ module.exports = {
         .setColor(0xffff00)
         .setTimestamp()
         .setThumbnail(`${message.guild.iconURL()}`)
-        .setAuthor(`${message.author.username}#${message.author.discriminator}`,`${message.author.displayAvatarURL()}`)
-        .addField(`Channel:`,`${message.channel}`,true)
-        .addField(`Channel ID:`,`${message.channel.id}`,true);
+        .setAuthor({
+          name: `${message.author.username}#${message.author.discriminator}`,
+          iconURL: `${message.author.displayAvatarURL()}`,
+        })
+        .setFields({
+          name: 'Channel:',
+          value: message.channel,
+          inline: true
+        },{
+          name: 'Channel ID:',
+          value: message.channel.id,
+          inline: true
+        });
 
     if (validUnlocks.includes(time)) {
         message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false }).then(() => {
@@ -52,7 +62,7 @@ module.exports = {
     try{
         modLog.send({
         embeds: [embed]
-      });;
+      });
     }catch(e){
         client.log(e,true);
     }

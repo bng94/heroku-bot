@@ -23,11 +23,27 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
       .setColor(0x00AE86)
       .setTimestamp()
-      .setAuthor(`${message.author.username}#${message.author.discriminator}`,`${message.author.displayAvatarURL()}`)
-      .addField(`User:`,user.tag, true)
-      .addField(`User ID:`, user.id, true)
-      .addField(`Action:`,`Kick`,true)
-      .addField(`Reason:`, reason, true);
+      .setAuthor({
+        name: `${message.author.username}#${message.author.discriminator}`,
+        iconURL: `${message.author.displayAvatarURL()}`,
+      })
+      .setFields({
+        name: 'User:',
+        value: user.tag,
+        inline: true
+      },{
+        name: 'User ID:',
+        value: user.id,
+        inline: true
+      },{
+        name: 'Action:',
+        value: `Kick`,
+        inline: true
+      },{
+        name: 'Reason:',
+        value: reason,
+        inline: true
+      });
     modLog.send({
         embeds: [embed]
       });;

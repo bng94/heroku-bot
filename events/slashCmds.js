@@ -33,8 +33,15 @@ module.exports = {
         //creates an array of the slashCmds Object
         let cmdArray = [...slashCmds.values()];
 
-        //we loop through all slash cmds we've set and create them.
+        /** 
+         * *Looping through all slash cmds we've set and create them.
+         * ! Make sure to comment this loop out once you have created them 
+         * ! We should only create the slash cmds we want once and only once 
+         * ! It is already saved as slash upon creation no need for more  
+         * ! Only changes we need to do is the cmd file for different responses
+        */
         for (const cmd of cmdArray) { 
+            client.log(`Loading Slash CMD: ${cmd.name}`, 'SLASH CMD');
             let tempObj = {
                 name: cmd.name,
                 description: cmd.description

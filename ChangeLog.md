@@ -1,6 +1,12 @@
 # ChangeLog
 All notable changes to this project will be documented below.
 
+### [3.1.0] - 2022-01-09
+* Updated missing chanes for v13
+* Updated all embeds
+* Updated to DiscordJS v13.5.1
+* Added more details creating slash commands in slashCmds.js file
+* Recreated the help.js command file, it has the button interaction components for displaying all of the bot commands without being a slash command.
 ### [3.0.0] - 2021-05-19
 * Updated to DiscordJS v13.3.1
 * Implemented new way to declare client,

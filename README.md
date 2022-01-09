@@ -88,5 +88,5 @@ If you find a problem with the bot, please file an issue.
 
 Please also state how the issue can be reproduced and the expected and unexpected behavior of the bot. If any screenshots please feel free to show it, so the issue can be solved as quickly as possible.
 
-[Report an Issue](https://github.com/ngbrandon1994/heroku-bot/issues/new)
+[Report an Issue](https://github.com/bng94/heroku-bot/issues/new)
 

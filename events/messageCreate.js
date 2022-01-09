@@ -12,12 +12,12 @@ module.exports = {
         const command = args.shift().toLowerCase();
         const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
 
-        const level = client.permissionsLevel(message);
+        const level = client.getPermissionsLevel(message);
 
         if (!cmd) return;
 
         client.log(`${message.content}`, `${message.author.tag}`, `Command Call`);
-        if (cmd.guildOnly && message.channel.type === 'dm') {
+        if (cmd.guildOnly && message.channel.type === 'DM') {
             return message.reply('I can\'t execute that command inside DMs!');
         }
 

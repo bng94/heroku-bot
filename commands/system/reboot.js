@@ -8,7 +8,7 @@ module.exports = {
 	usage: '',
 	async execute(message, args, client) {
         let channelID = message.author.id;
-        const channelTypeDM = message.channel.type === "dm" ? true : false;
+        const channelTypeDM = message.channel.type === "DM" ? true : false;
         if(!channelTypeDM){
             channelID = message.channel.id;
         }

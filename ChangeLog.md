@@ -2,7 +2,7 @@
 All notable changes to this project will be documented below.
 
 ### [3.1.0] - 2022-01-09
-* Updated missing chanes for v13
+* Updated missing changes for v13
 * Updated all embeds for v13
 * Updated to DiscordJS v13.5.1
 * Added more details creating slash commands in slashCmds.js file

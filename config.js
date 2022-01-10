@@ -1,7 +1,7 @@
 const config = {
-  "ownerID": "210587665723162626",
-  "admins": "210587665723162626",
-  "support": "210587665723162626",
+  "ownerID": process.env.ownerID,
+  "admins": process.env.ownerID,
+  "support": process.env.ownerID,
   "prefix": "-",
 
   //defines the mod role and admin role names for permissions.

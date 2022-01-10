@@ -19,11 +19,14 @@ module.exports = {
 		const startUpMsg = "Bot just started up!";
 		const afterRestartMsg = "Bot is now back online!";
 
-		if(client.restartChanTypeDM != false){
+		if(client.restartChanTypeDM !== false){
 			const msg = client.restartCmdUsage ? afterRestartMsg : startUpMsg;
-			//The following code should be used if you aren't using free version of heroku and hosting on your PC or another server/device.
-			//client.sendOwnerMsg(msg);
-			//Since im using heroku for free, this bot restarts frequently on a daily basis, since my bot is running 24/7 and these DM are quite repetitive, so instead will console.log it using our client.log() function from the function.js file.
+
+			//Avoid using this incase your bot hosting services is unstable
+			//OR bot restarts frequently for whatever reasons.
+			//Commenting it out ensure you don't get spammed via DM.
+			// This is however useful it you want to track when and why your bot restarts.
+			client.sendOwnerMsg(msg);
 			client.log(msg, `LOGIN MSG`, 'READY');
 		} else {
 			const channel = await client.channels.cache.get(client.restartChanID)

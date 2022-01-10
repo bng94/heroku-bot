@@ -23,7 +23,7 @@ You need to install the following packages:
 * botID = your bot ID => used for slash cmds, you MUST define this as a string of your bot id or else slash cmds won't work.
 * MONGO_URI = your mongoDB connection URL
 
->#### If don't have MongoDB or is new to programming/databases, you should consider removing mongoose package and functions related to mongoose, as you would need to setup MonogoDB, so remove the `schemas folder`, `mongo.js` file, `restartMsg.js` file in the modules folder and `line 11-34` from `ready.js` file in the event folderand line 17 from `reboot.js` cmd file from the system subfolder.
+>#### If don't have MongoDB or is new to programming/databases, you should consider removing mongoose package and functions related to mongoose, as you would need to setup MonogoDB, so remove the `schemas folder`, `mongo.js` file, `restartMsg.js` file in the modules folder and `line 11-37` from `ready.js` file in the event folderand line 17 from `reboot.js` cmd file from the system subfolder.
 ## Usage
 
 You can run the bot using command line with one of the two commands listed:

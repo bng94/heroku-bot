@@ -89,6 +89,9 @@ const getAllCommandsArray = (client, commands) => {
   return dataArray;
 };
 
+/**
+ * This is the inital embed you see when you call the help cmd
+ */
 const getDefaultEmbed = (data, client) => {
   const categories = data.map((cat) => `**${cat.category}**`).join(`\n`);
 
@@ -105,6 +108,9 @@ Click the respective buttons to see the commands of the category.  You have ${
   return defaultEmbed;
 };
 
+/**
+ * The updated embed based off the button category you clicked on.
+ */
 const getUpdateEmbed = (data, i, client) => {
   const index = data.findIndex((d) => d.category === i.customId);
   const cmds = data[index].commands
@@ -128,8 +134,10 @@ const getUpdateEmbed = (data, i, client) => {
 };
 
 const getRowOfButtons = (data, disabled = false) => {
-  // admin, commands, misc, system
-
+  
+  /**
+   * These are defined button colors for category that matches the name
+   */
   const colorForCategory = [
     {
       name: "admin",
@@ -148,6 +156,8 @@ const getRowOfButtons = (data, disabled = false) => {
       color: "SECONDARY",
     },
   ];
+  
+  /** Default Button color if its wasn't listed in the array of obj */
   const defaultColor = "PRIMARY";
 
   const btnArray = data.map((res) => {

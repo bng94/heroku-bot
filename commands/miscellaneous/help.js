@@ -15,12 +15,10 @@ module.exports = {
     const data = getAllCommandsArray(client, commands);
 
     if (!args.length) {
-      message.react("👍");
       const embed = getDefaultEmbed(data, client);
       const row = getRowOfButtons(data);
 
-      message.channel
-        .send({
+      message.reply({
           embeds: [embed],
           components: [row],
         })
@@ -43,11 +41,9 @@ module.exports = {
           });
         });
     } else {
-      message.react("👌");
       const name = args[0].toLowerCase();
       const response = await getSingleCmd(commands, name, client);
-      return message.channel
-        .send(response)
+      return message.reply(response)
         .catch((error) => console.log(error));
     }
   },
@@ -123,7 +119,7 @@ const getUpdateEmbed = (data, i, client) => {
       name: `${client.user.username} Help Menu`,
       iconURL: `${client.user.avatarURL()}`,
     })
-    .setTitle(data[index].category)
+    .setTitle(`${data[index].category} Category`)
     .setDescription(cmds)
     .setFields({
       name: `To see a more details about a specifc command type following and replace "name" with the command name:`,
@@ -220,7 +216,7 @@ const getSingleCmd = async (commands, name, client) => {
       name: `${client.user.tag}`,
       iconURL: `${client.user.avatarURL()}`,
     })
-    .setTitle(`${command.name.toProperCase()} Category`)
+    .setTitle(`${command.name.toProperCase()} Command`)
     .setDescription(command.description)
     .setTimestamp()
     .setFields(fieldObj);

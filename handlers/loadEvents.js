@@ -11,7 +11,8 @@ module.exports = (client) => {
                 loadEvents(path.join(dir, file))
             } else {
                 const event = require(path.join(__dirname, dir, file))
-                const eventName = path.basename(file, '.js') !== event.name ? event.name : path.basename(file, '.js');
+                //if event.name is defined then use it, otherwise assume file name is the correct discord event name
+                const eventName = event.name ? event.name : path.basename(file, '.js');
                 if(!eventName) continue;
                 try{
                     if (event.once) {

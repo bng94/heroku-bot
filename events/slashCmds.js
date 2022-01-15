@@ -55,6 +55,6 @@ module.exports = {
             commands?.create(tempObj);
         } 
         
-		client.log(msg, `LOGIN MSG`, 'READY');
+		client.log(`Bot just started up!`, `LOGIN MSG`, 'READY');
 	},
 };

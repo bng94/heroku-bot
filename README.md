@@ -19,7 +19,8 @@ or if you forked the repository then just run:
 * npm install
 
 ####  Create an `.env` file for your Environment variables
->##### :warning: **Warning:**  Note this `.env` file is a file that you MUST never be shared with anyone and never be uploaded to  your public repository and/or you should use a .gitignore file so you don't accident upload the file to github! 
+
+> ⚠ <font color="red">**Warning:**</font> This `.env` file is a file that you MUST never be shared with anyone and never be uploaded to  your public repository and/or you should use a .gitignore file so you don't accident upload the file to github! 
 * TOKEN = your bot token
 * ownerID = your own discord user ID
 * serverLink = your own discord server invite link

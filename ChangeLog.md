@@ -1,6 +1,6 @@
 # ChangeLog
 All notable changes to this project will be documented below.
-### [3.2.0] - 2022-01-09
+### [3.2.0] - 2022-01-15
 * Removed MongoDB connection and related files.
 * MongoDB does not work with Heroku unless you have an IP address heroku provided.
 ### [3.1.0] - 2022-01-09

@@ -54,5 +54,7 @@ module.exports = {
 
             commands?.create(tempObj);
         } 
+        
+		client.log(msg, `LOGIN MSG`, 'READY');
 	},
 };

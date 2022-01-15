@@ -7,14 +7,8 @@ module.exports = {
     minArgs: 0, 
 	usage: '',
 	async execute(message, args, client) {
-        let channelID = message.author.id;
-        const channelTypeDM = message.channel.type === "DM" ? true : false;
-        if(!channelTypeDM){
-            channelID = message.channel.id;
-        }
-        let messageID;
-        await message.channel.send("Restarting...").then(msg => messageID = msg.id);
-        await client.restartLogger(channelID, messageID, channelTypeDM);
+        message.channel.send("Restarting...")
+        
         client.commands.forEach( async cmd => {
         await client.unloadCommand(cmd);
         });

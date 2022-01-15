@@ -30,7 +30,9 @@ module.exports = (client) => {
   
   client.sendOwnerMsg = async (msg) =>{
       const owner = await client.users.fetch(client.config.ownerID);
-          return owner.send(msg);
+          return owner.send({
+            content: msg
+          });
   };  
   
   client.awaitReply = async (msg, question, limit = 60000) => {

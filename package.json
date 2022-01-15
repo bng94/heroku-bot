@@ -1,7 +1,7 @@
 {
   "name": "the-master",
-  "version": "3.1.0",
-  "description": "The backup discord bot to my backup bot, on heroku.",
+  "version": "3.2.0",
+  "description": "The backup discord bot to my backup bot created by Brandon Ng.",
   "main": "index.js",
   "engines": {
     "node": "16.13",
@@ -27,7 +27,6 @@
     "module-alias": "^2.2.2",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
-    "mongoose": "^6.1.5",
     "ms": "^2.1.3"
   },
   "_moduleAliases": {
@@ -35,7 +34,6 @@
     "@modules": "./modules",
     "@handlers": "./handlers",
     "@commands": "./commands",
-    "@events": "./events",
-    "@schemas": "./schemas"
+    "@events": "./events"
   }
 }

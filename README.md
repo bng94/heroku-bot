@@ -11,8 +11,12 @@ You need to install the following packages:
 * npm install discord.js@latest
 * npm install module-alias@latest
 * npm install dotenv@latest
-* npm install mongoose@latest
-##### mongoose may be removed in a future update if those who are interested in this project and don't use MongoDB
+* npm install moment
+* npm install moment-duration-format
+* npm install ms
+
+or if you forked the repository then just run:
+* npm install
 
 ####  Create an `.env` file for your Environment variables
 >##### Note this `.env` file is a file that you MUST never be shared with anyone and never be uploaded to  your public repository and/or you should use a .gitignore file so you don't accident upload the file to github! 
@@ -20,10 +24,6 @@ You need to install the following packages:
 * ownerID = your own discord user ID
 * serverLink = your own discord server invite link
 * serverID = your own discord server invite link
-* botID = your bot ID => used for slash cmds, you MUST define this as a string of your bot id or else slash cmds won't work.
-* MONGO_URI = your mongoDB connection URL
-
->#### If don't have MongoDB or is new to programming/databases, you should consider removing mongoose package and functions related to mongoose, as you would need to setup MonogoDB, so remove the `schemas folder`, `mongo.js` file, `restartMsg.js` file in the modules folder and `line 11-37` from `ready.js` file in the event folderand line 17 from `reboot.js` cmd file from the system subfolder.
 ## Usage
 
 You can run the bot using command line with one of the two commands listed:

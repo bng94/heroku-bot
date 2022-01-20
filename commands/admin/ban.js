@@ -24,10 +24,10 @@ module.exports = {
         .catch(console.error);
     if (reason.length < 1)
       return message.reply("You must supply a reason for the ban.");
-    if (!message.guild.member(user).bannable)
+    if (!message.guild.members.fetch(user).bannable)
       return message.reply("I cannot ban that member");
 
-    message.guild.member(user).ban(reason);
+    message.guild.members.fetch(user).ban(reason);
     message.channel.send(`${user.tag} has been Banned!`);
 
     const embed = new Discord.MessageEmbed()

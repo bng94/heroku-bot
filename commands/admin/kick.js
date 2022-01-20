@@ -16,8 +16,8 @@ module.exports = {
     if (reason.length < 1) return message.reply('You must supply a reason for the ban.');  
     if (!modLog) return message.reply('You need a mod-log channel before you can kick in the guild!');
 
-    if (!message.guild.member(user).kickable) return message.reply('I cannot kick that member');
-    message.guild.member(user).kick(reason);
+    if (!message.guild.members.fetch(user).kickable) return message.reply('I cannot kick that member');
+    message.guild.members.fetch(user).kick(reason);
     message.channel.send(`${user.tag} has been Kicked!`);
 
     const embed = new Discord.MessageEmbed()

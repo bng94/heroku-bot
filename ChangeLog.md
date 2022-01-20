@@ -1,5 +1,8 @@
 # ChangeLog
 All notable changes to this project will be documented below.
+
+### [3.2.1] - 2022-01-19
+* Added partialsl which allows DM messages to be cached and available to use.
 ### [3.2.0] - 2022-01-15
 * Removed MongoDB connection and related files.
 * MongoDB does not work with Heroku unless you have an IP address heroku provided.

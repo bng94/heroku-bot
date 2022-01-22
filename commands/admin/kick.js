@@ -8,7 +8,7 @@ module.exports = {
   minArgs: 2,
   maxArgs: -1, 
 	usage: '<@user> <reason>',
-	execute(message, args, client) {
+	async execute(message, args, client) {
     const user = message.mentions.users.first();
     const reason = args.slice(1).join(' ');
     const modLog = message.guild.channels.cache.find(ch => ch.name === 'mod-log');
@@ -16,8 +16,10 @@ module.exports = {
     if (reason.length < 1) return message.reply('You must supply a reason for the ban.');  
     if (!modLog) return message.reply('You need a mod-log channel before you can kick in the guild!');
 
-    if (!message.guild.members.fetch(user).kickable) return message.reply('I cannot kick that member');
-    message.guild.members.fetch(user).kick(reason);
+    const guildMember = await message.guild.members.fetch(user);
+
+    if (!guildMember.kickable) return message.reply('I cannot kick that member');
+    guildMember.kick(reason);
     message.channel.send(`${user.tag} has been Kicked!`);
 
     const embed = new Discord.MessageEmbed()

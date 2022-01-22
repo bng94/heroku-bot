@@ -8,7 +8,7 @@ module.exports = {
   minArgs: 2,
   maxArgs: -1,
   usage: "<@user> <reason>",
-  execute(message, args, client) {
+  async execute(message, args, client) {
     const reason = args.slice(1).join(" ");
     const user = message.mentions.users.first();
     const modLog = message.guild.channels.cache.find(
@@ -24,10 +24,12 @@ module.exports = {
         .catch(console.error);
     if (reason.length < 1)
       return message.reply("You must supply a reason for the ban.");
-    if (!message.guild.members.fetch(user).bannable)
-      return message.reply("I cannot ban that member");
-
-    message.guild.members.fetch(user).ban(reason);
+      
+      const guildMember = await message.guild.members.fetch(user);
+      if (!guildMember.bannable) {
+        return message.reply('I cannot ban that member');
+      }
+      guildMember.ban(reason);
     message.channel.send(`${user.tag} has been Banned!`);
 
     const embed = new Discord.MessageEmbed()

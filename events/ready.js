@@ -9,8 +9,9 @@ module.exports = {
 
 
     const startUpMsg = "Bot just started up!";
-    const afterRestartMsg = "Bot is now back online!";
 
-	client.sendOwnerMsg(startUpMsg);
+    /** Commented out DM to bot owner due to spam from heroku free hosting usage */
+    //client.sendOwnerMsg(startUpMsg);
+    client.log(startUpMsg, "Ready MSG");
   },
 };

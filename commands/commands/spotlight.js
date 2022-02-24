@@ -24,14 +24,14 @@ module.exports = {
     }
 
     let embed = new Discord.MessageEmbed()
-      .addField(`Current Spotight:`, client.currentSL)
+      .addField(`Current Spotlight:`, client.currentSL)
       .addField(
-        `Next Spotight in ${client.timeToNextSL} days is:`,
+        `Next Spotlight in ${client.timeToNextSL} days is:`,
         client.nextSL
       );
 
     if (client.currentSL != "Castle Wars") {
-      embed.addField(`Castle Wars SpotLight:`, cw);
+      embed.addField(`Castle Wars Spotlight:`, cw);
     }
 
     try {

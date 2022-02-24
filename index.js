@@ -1,7 +1,6 @@
 require("module-alias/register");
 require("dotenv").config();
 
-const Discord = require("discord.js");
 const { Client, Collection, Intents } = require("discord.js");
 
 // !This is the new way to create the client.

@@ -1,6 +1,6 @@
 {
   "name": "the-master",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "description": "The backup discord bot to my backup bot created by Brandon Ng.",
   "main": "index.js",
   "engines": {

@@ -2,11 +2,10 @@ require("module-alias/register");
 require("dotenv").config();
 
 const DiscordFeaturesHandler = require("discord-features-handler");
-const { Client, Collection, Intents } = require("discord.js");
+const { Client, Intents } = require("discord.js");
 
-// !This is the new way to create the client.
 // I just pass in majority of the Intents incase I do use them along the way
-// I believe its preferred to pass in the intents you are using then all.
+// It is conventional to pass in only the intents + partials for your use cases
 const client = new Client({
   intents: [
     Intents.FLAGS.GUILDS,
@@ -28,9 +27,13 @@ functions(client);
 DiscordFeaturesHandler(client, {
   mainDirectory: __dirname,
   config: './config.js',
-  commandDir: 'commands',
-  eventDir: 'events',
-  modulesDir: 'modules',
-  filesToExcludeInHandlers: ['function.js', 'spotlight.js', 'restartMsg.js', 'time.js'],
+  disableBuiltIn: {
+    events: {
+      messageCreate: true
+    }
+  },
+  filesToExcludeInHandlers: {
+    modules: ['function.js', 'spotlight.js', 'time.js'],
+  },
   BOT_TOKEN: process.env.TOKEN
 });

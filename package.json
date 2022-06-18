@@ -4,7 +4,7 @@
   "description": "The backup discord bot to my backup bot created by Brandon Ng.",
   "main": "index.js",
   "engines": {
-    "node": "16.13",
+    "node": "v16.13.0",
     "npm": "8.1.0"
   },
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/bng94/heroku-bot#readme",
   "dependencies": {
-    "discord-features-handler": "^0.11.1",
+    "discord-features-handler": "^0.13.9",
     "discord.js": "^13.5.1",
     "dotenv": "^10.0.0",
     "module-alias": "^2.2.2",

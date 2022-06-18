@@ -8,9 +8,10 @@ This is primarily a backup bot of a bot called "Doctor" on my server and will be
 ## Configuration
 
 You need to install the following packages:
-* npm install discord.js@latest
-* npm install module-alias@latest
-* npm install dotenv@latest
+* npm install discord.js
+* npm install discord-features-handler
+* npm install module-alias
+* npm install dotenv
 * npm install moment
 * npm install moment-duration-format
 * npm install ms
@@ -25,15 +26,19 @@ or if you forked the repository then just run:
 * ownerID = your own discord user ID
 * serverLink = your own discord server invite link
 * serverID = your own discord server invite link
-## Usage
+## Starting up the bot
 
 You can run the bot using command line with one of the two commands listed:
 * `Node index.js`
+  * You can also type `npm start` to run this `node index.js`
 * `pm2 start index.js`
 
 *Recommended to use pm2 start if you want the bot to run 24/7, and restart if it crashes or encounters a bug. Also able to restarts upon using the restart command*
-## Creating Commands
-Every command contains the following:
+
+## Setup
+#### The following setup are based on Discord-Features-Handler package. We are using this package to handle our discord events, setting up command and slash commands as well as our modules files. You can read more about the package in the [DiscordFeaturesHandler Documentation](https://bng94.gitbook.io/discord-features-handler-docs/).
+
+### Creating Commands contains the following properties:
 * name - name of the command.
 * description - description of the command
 * aliases - for command aliases, If none define it as:  `aliases: []`,
@@ -62,7 +67,7 @@ module.exports = {
 };
 ```
 
-## Creating Slash Commands
+### Creating Slash Commands
 You can create slash commands by adding these objects to your the command file that you want to change into a slash command.
 #### Objects:
 ```javascript

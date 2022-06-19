@@ -1,21 +1,6 @@
 const time = require("@modules/time.js");
 module.exports = (client) => {
   time(client);
-  client.getPermissionsLevel = ({ author, user, channel, guild, member }) => {
-      let permLvl = 0;
-      const currentUser = author || user;
-      const permOrder = client.config.permissions.slice(0).sort((p, c) => p.level < c.level ? 1 : -1);
-  
-      while (permOrder.length) {
-        const currentLevel = permOrder.shift();
-        if (currentLevel.check(currentUser, channel, guild, member)) {
-          permLvl = currentLevel.level;
-          break;
-        }
-      }
-      return permLvl;
-  };
-
   client.log = (msg, title = false, type = "log") => {
       if(title === true){
           console.log(`========== ERROR ==========`);
@@ -59,83 +44,6 @@ module.exports = (client) => {
     const id = matches[1];
     return client.users.cache.get(id);
   };
-
-  const checkCommandErrors = (command) => {
-    let error = "";
-    if(typeof command.permissions === 'undefined'){
-      error += `\n- Permission level is Missing!`;
-    } else if(isNaN(command.permissions)){
-      error += `\n- Permission level must be a Number!`;
-    }
-
-    if(typeof command.minArgs === 'undefined'){
-      error += `\n- Minimum args is Missing!`;
-    } else if(isNaN(command.minArgs)){
-      error += `\n- MinArgs must be a Number!`;
-    }
-
-    if(typeof command.usage === 'undefined'){
-      error += `\n- Command Usage is Missing!`;
-    } 
-
-    if(typeof command.description === 'undefined'){
-      error += `\n- Description is Missing!`;
-    } 
-    return error;
-  };
-
-  client.loadCommand = (file, folder, reloaded = false) => {
-    try {
-      const command = require(`@commands/${folder}/${file}`);
-      error = checkCommandErrors(command);
-      if(error != ""){
-        const placeHolder = `\nRequired:`
-        throw placeHolder+error;
-      }
-
-      /**
-       * *Remove the need of using the following in each cmd file
-       * const path = require('path');
-       * const directory = path.basename(__dirname);
-       * category: directory,
-       * *defines their category as folderName that contains the cmd file
-       */
-      command.category = folder.toProperCase();
-      client.commands.set(command.name, command);
-
-      if(command.aliases){
-          command.aliases.forEach(alias => {
-              client.aliases.set(alias, command.name);
-          });
-      }
-      
-      if(reloaded) client.log(`Loading Command: ${file}. 👌`, 'CMD');
-      return false;
-    } catch (e) {
-        return `Unable to load command ${file}: ${e}`;
-    }
-  };
-
-  //recommend test later
-  client.unloadCommand = async (commandName, folderName) => {
-      let command;
-      if (client.commands.has(commandName)) {
-        command = client.commands.get(commandName);
-      } else if (client.aliases.has(commandName)) {
-        command = client.commands.get(client.aliases.get(commandName));
-      }
-      if (!command) return `The command \`${commandName}\` doesnt seem to exist, nor is it an alias. Try again!`;
-  
-      if (command.shutdown) {
-        await command.shutdown(client);
-      }
-      delete require.cache[require.resolve(`@commands/${folderName}/${commandName}.js`)];
-      return false;
-  };
-
-  
-  // `await client.wait(1000);` to "pause" for 1 second.
-  client.wait = require("util").promisify(setTimeout);
   
   /*
   MESSAGE CLEAN FUNCTION
@@ -159,19 +67,9 @@ module.exports = (client) => {
       return text;
   };
 
-  // <String>.toPropercase() returns a proper-cased string such as:
-  // "Mary had a little lamb".toProperCase() returns "Mary Had A Little Lamb"
-  String.prototype.toProperCase = function() {
-    return this.replace(/([^\W_]+[^\s-]*) */g, function(txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-  };
-
   // <Array>.random() returns a single random element from an array
   // [1, 2, 3, 4, 5].random() can return 1, 2, 3, 4 or 5.
   Array.prototype.random = function() {
     return this[Math.floor(Math.random() * this.length)]
   };
-  
-  process.on('unhandledRejection', error => {
-    console.error('Unhandled promise rejection:', error);
-  });
 };

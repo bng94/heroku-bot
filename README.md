@@ -4,21 +4,16 @@ A discord.js backup bot of my backup bot. Originally was planning to create one 
 # Description
 This is primarily a backup bot of a bot called "Doctor" on my server and will be planning to make this bot called "Master" in references to the BBC TV Show Doctor Who. This is a generic bot for everyone to download and use. As this is one of my first early JavaScript Projects I though it would be nice to share for those interested in creating their own discord.js bots. If there is an handful of people whom fork or give an input to this project, will expand and present more generic features that aren't used in this backup bot that may or is being used in my other bots.
 
-# Configuration
+# Installation
 
-You need to install the following packages:
-* npm install discord.js
-* npm install discord-features-handler
-* npm install module-alias
-* npm install dotenv
-* npm install moment
-* npm install moment-duration-format
-* npm install ms
+If you clone or forked my repository make sure to run:
 
-or if you forked the repository then just run:
-* npm install
+```javascript
+ npm install
+```
+## Create your Environment variables file
 
-#  Create an `.env` file for your Environment variables
+This file is called .env and should be in the same parent folder as your index.js file
 
 > ⚠ **Warning:** This `.env` file is a file that you MUST never be shared with anyone and never be uploaded to  your public repository and/or you should use a .gitignore file so you don't accident upload the file to github! 
 * TOKEN = your bot token
@@ -29,19 +24,19 @@ or if you forked the repository then just run:
 you can access these variables by using `process.env.YOUR_VARIABLE_NAME`
 
 > Example: `process.env.TOKEN`
-# Starting up the bot
 
-You can run the bot using command line with one of the two commands listed:
+
+### You can run the bot using command line with one of the two commands listed:
+
 * `Node index.js`
-  * You can also type `npm start` to run this `node index.js`
 * `pm2 start index.js`
 
 *Recommended to use pm2 start if you want the bot to run 24/7, and restart if it crashes or encounters a bug. Also able to restarts upon using the restart command*
 
-# Setup
-#### The following setup are based on Discord-Features-Handler package. We are using this package to handle our discord events, setting up command and slash commands as well as our modules files. You can read more about the package in the [DiscordFeaturesHandler Documentation](https://bng94.gitbook.io/discord-features-handler-docs/).
-
 ## Creating Commands 
+
+> ⚠ **NOTE:**  The following setup are based on discord-features-handler package. We are using this package to handle our discord events, setting up command and slash commands as well as our modules files. You can read more about the package in the DiscordFeaturesHandler Documentation.
+
 Command files must contain the following properties:
 * name - name of the command.
 * description - description of the command
@@ -72,7 +67,7 @@ module.exports = {
 ```
 
 ## Creating Slash Commands
-You can create slash commands by adding these objects to your the command file that you want to change into a slash command.
+You can create slash commands by adding these properties to your the command file that you want to change into a slash command.
 ### Objects:
 ```javascript
 slash: true,
@@ -104,7 +99,7 @@ If you want to use slash command options then add this into your command file:
 `slashOptions: `
 
 ### Example:
-> If the slash command requires you to mention someone then set this option
+> If the slash command requires you to mention someone then set this property:
 ```javascript
 slash: true,
 slashOptions: [{ 

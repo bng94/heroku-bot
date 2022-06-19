@@ -22,6 +22,7 @@ const client = new Client({
 //this should be initialized strictly after client is define
 
 const functions = require("@modules/functions.js");
+
 functions(client);
 
 DiscordFeaturesHandler(client, {

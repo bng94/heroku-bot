@@ -18,6 +18,7 @@ const client = new Client({
     Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
   ],
   partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+  
 });
 //this should be initialized strictly after client is define
 
@@ -33,6 +34,9 @@ DiscordFeaturesHandler(client, {
       messageCreate: true
     }
   },
+  loadCommandsLoggerOff: true,
+  loadEventsLoggerOff: true,
+  loadModulesLoggerOff: true,
   filesToExcludeInHandlers: {
     modules: ['function.js', 'spotlight.js', 'time.js'],
   },

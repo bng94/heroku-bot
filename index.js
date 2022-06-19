@@ -27,7 +27,7 @@ functions(client);
 
 DiscordFeaturesHandler(client, {
   mainDirectory: __dirname,
-  config: './config.js',
+  config: 'config.js',
   disableBuiltIn: {
     events: {
       messageCreate: true

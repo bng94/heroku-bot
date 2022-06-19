@@ -31,7 +31,9 @@ DiscordFeaturesHandler(client, {
   config: 'config.js',
   disableBuiltIn: {
     events: {
-      messageCreate: true
+      messageCreate: true,
+      interactionCreate: true,
+      loadSlashCommandsReady: true,
     }
   },
   loadCommandsLoggerOff: true,

@@ -17,7 +17,7 @@ module.exports = {
       .setTitle(`About Me`)
       .setDescription(`I am a bot created for my personal server!`)
       .setAuthor({ name: `${pack.name} v${pack.version}` })
-      .setFields(
+      .addFields([
         {
           name: `Developer:`,
           value: `${client.users.cache.get(client.config.ownerID)}`,
@@ -26,13 +26,8 @@ module.exports = {
           name: `Library:`,
           value: `Discord.js v${version}\nNode ${process.version}`,
           inline: true,
-        },
-        {
-          name: `Developer:`,
-          value: process.env.serverLink,
-          inline: true,
         }
-      );
+      ]);
 
     try {
       return message.channel.send({

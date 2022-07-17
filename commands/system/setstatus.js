@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'setstatus',
-	description: 'Set Status of the bot!',
+	description: 'Set Online, Idle, Invisible, Do Not Disturb Status of the bot!',
 	aliases: ['ss'],
 	guildOnly: true,
 	permissions: 10,

@@ -3,7 +3,7 @@ const directory = path.basename(__dirname);
 
 module.exports = {
 	name: 'setgame',
-	description: 'Set Status of the bot!',
+	description: 'Set Activity Status of the bot!',
     category: directory,
     aliases: [],
 	guildOnly: true,

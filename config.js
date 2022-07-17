@@ -1,22 +1,42 @@
 const config = {
+  // Your discord user id
+  // owner: access to source code of bot etc...
   ownerID: process.env.ownerID,
+  // this can be both array or a single user id of your bot admins users
+  // bot admins: reload bot commands, restart bot so forth...
   admins: process.env.ownerID,
+  // this can be both array or a single user id of your bot support users
+  // bot support: people who knows how your bot works and do simple fix
   support: process.env.ownerID,
-  prefix: "-",
+  // prefix is what the keyword to execute your bot commands
+  // most people uses "!" , or ".". You can select what you want!
+  prefix: "!",
+  // if we should show command denied message for
+  // Being required to be a bot support or higher to use the command
+  // *Recommend: true, so we can give the "imagination" those command don't exist
+  // *Hides commands that regular users to don't see and they don't have access to
+  hideDeniedBotAdminCommandsUsage: false,
 
-  //defines the mod role and admin role names for permissions.
-  // You can also use .env and set these roles there, make it easier to change role name/id
+  // ?optional: These two are optional variable and purely for sample setup
+  // defines the mod role and admin role names for permissions.
+  // You can also use .env and set these roles there, 
   modRole: "Mod",
   adminRole: "Admin",
 
-  // PERMISSION LEVEL DEFINITIONS.
+  // !PERMISSION LEVEL DEFINITIONS.
+  // Level 1,2, 6,7 are undefined
   permissions: [
-    //Default
+    // Default User and for all Direct Message Users 
+    // (excluding bot support, admin, owner)
     {
       level: 0,
       name: "User",
       check: () => true,
     },
+    // Level 1, 2, can be defined to tailored to your needs for servers
+    
+    // Level: 3
+    // This is the server mod role, based off role based modRole variable.
     {
       level: 3,
       name: "Moderator",
@@ -31,6 +51,8 @@ const config = {
         }
       },
     },
+    // Level: 4
+    // This is the server admin role, based off role based adminRole variable.
     {
       level: 4,
       name: "Administrator",
@@ -45,6 +67,8 @@ const config = {
         }
       },
     },
+    // Level: 5
+    // This is the server owner where channel is called.
     {
       level: 5,
       name: "Server Owner",
@@ -56,13 +80,14 @@ const config = {
           : false;
       },
     },
-    // Level 5 6 7, are defined whatever feel fits
+    // Level 6, 7, can be defined to tailored to your needs
+    
+    // Level: 8
+    // This is the bot support, predefined in the support array variable above
     {
       level: 8,
       name: "Bot Support",
-      // The check is by reading if an ID is part of this array. Yes, this means you need to
-      // change this and reboot the bot to add a support user. Make it better yourself!
-      check: (author) => {
+    check: (author) => {
         if (!config.support) {
           if (config.ownerID === author.id) {
             return true;
@@ -74,8 +99,10 @@ const config = {
         return config.support.includes(author.id);
       },
     },
-
-    // Bot Admin has some limited access like rebooting the bot or reloading commands.
+    
+    // Level: 9
+    // This is the Bot Admin
+    // Some limited access like rebooting the bot or reloading commands.
     {
       level: 9,
       name: "Bot Admin",
@@ -91,12 +118,18 @@ const config = {
         return config.admins.includes(author.id);
       },
     },
-    //Highest Permissions because of dangerous commands such as eval is only ran by the owner
+    
+    // Level: 10
+    // This is the Bot Owner, you should use your user id and set it to yourself
+    // Highest Permissions because of dangerous commands such as eval 
+    // You can also use this to fun commands that only you can use
     {
       level: 10,
       name: "Bot Owner",
-      // Another simple check, compares the message author id to the one stored in the config file.
-      check: (author) => config.ownerID === author.id,
+      // A simple check, compares the message author id to the one stored in the config file.
+      check: (author) => {
+        return config.ownerID === author.id;
+      },
     },
   ],
 };

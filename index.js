@@ -28,19 +28,17 @@ functions(client);
 
 DiscordFeaturesHandler(client, {
   mainDirectory: __dirname,
-  config: 'config.js',
+  config: './config.js',
   disableBuiltIn: {
-    events: {
-      messageCreate: true,
-      interactionCreate: true,
-      loadSlashCommandsReady: true,
+    commands: {
+      help: true,
     }
   },
   loadCommandsLoggerOff: true,
   loadEventsLoggerOff: true,
   loadModulesLoggerOff: true,
   filesToExcludeInHandlers: {
-    modules: ['function.js', 'spotlight.js', 'time.js'],
+    modules: ['functions.js', 'spotlight.js', 'time.js'],
   },
   BOT_TOKEN: process.env.TOKEN
 });

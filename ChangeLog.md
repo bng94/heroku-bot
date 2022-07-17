@@ -1,6 +1,11 @@
 # ChangeLog
 All notable changes to this project will be documented below.
 
+## [4.1.0] - 2022-07-17
+* Feat: Updated DiscordFeaturesHandler to v1.1.0
+  * Removed messageCreate.js, interactionCreate.js, and slashCmds.js event files and use handler instead
+  * Reformatted config file to use a copy of the default configuration file from DiscordFeaturesHandler
+  * Disable the built-in help command and use my own version
 ## [4.0.0] - 2022-06-18
 * Removed all handler folder and used the package to handle loading commands, discord events and module files.
 ## [3.3.0] - 2022-01-19

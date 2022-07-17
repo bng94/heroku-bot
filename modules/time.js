@@ -77,18 +77,26 @@ module.exports = (client) => {
     }
     return false;
   };
+  /**
+   * 
+   * @returns the current time based off local machine
+   */
 
   client.timeNow = () => {
     let today = new Date();
     return today.toString();
   };
 
+  /**
+   * 
+   * @returns the current time in UTC
+   */
   client.timeUTCNow = () => {
     let today = new Date();
     return today.toUTCString();
   };
 
-  //Returns Month Date Year Hour:Min in EST
+  //Returns Month Date Year Hour:Min based off local timezone of server this bot is hosting from
   client.timeFormatted = (abbreviation = false) => {
     const month = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
     const monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
@@ -112,6 +120,11 @@ module.exports = (client) => {
     }
   }
 
+  /**
+   * 
+   * @param {number} millisec time in milliseconds
+   * @returns the time into an human readable string
+   */
   client.timeConversion = (millisec) => {
     const seconds = (millisec / 1000);
     const minuteSec = (millisec / (1000 * 60));

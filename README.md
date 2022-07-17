@@ -2,7 +2,7 @@
 A discord.js backup bot of my backup bot. Originally was planning to create one bot but ended up creating another bot then this one. This bot is hosted on heroku for free and as such will run 24/7 for 23 days a month.
 
 # Description
-This is primarily a backup bot of a bot called "Doctor" on my server and will be planning to make this bot called "Master" in references to the BBC TV Show Doctor Who. This is a generic bot for everyone to download and use. As this is one of my first early JavaScript Projects I though it would be nice to share for those interested in creating their own discord.js bots. If there is an handful of people whom fork or give an input to this project, will expand and present more generic features that aren't used in this backup bot that may or is being used in my other bots.
+This is primarily a backup bot of a bot called "Doctor" on my server and will be planning to make this bot called "Master" in references to the BBC TV Show Doctor Who. This is a generic bot for everyone to download and use. This bot is flexible to be used amd hosted on heroku server or other free hosting services. Since the creation of my DiscordFeaturesHandler npm package, I am converting this more geared as a demo bot for those interested in looking at a basic Discord.js bot setup with the package. Please give this repository or DiscordFeaturesHandler repository a star if you like what you see and want to see the more of these type of projects!
 
 # Installation
 
@@ -26,9 +26,10 @@ you can access these variables by using `process.env.YOUR_VARIABLE_NAME`
 > Example: `process.env.TOKEN`
 
 
-### You can run the bot using command line with one of the two commands listed:
+## Starting up the bot:
+Use one of the following command in your terminal to start the bot:
 
-* `Node index.js`
+* `npm start` or `Node index.js`
 * `pm2 start index.js`
 
 *Recommended to use pm2 start if you want the bot to run 24/7, and restart if it crashes or encounters a bug. Also able to restarts upon using the restart command*
@@ -144,3 +145,4 @@ Please also state how the issue can be reproduced and the expected and unexpecte
 You are welcome to PR if you see any changes that should be made.
 
 [Report an Issue](https://github.com/bng94/heroku-bot/issues/new)
+

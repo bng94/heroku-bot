@@ -22,8 +22,11 @@ const client = new Client({
 });
 //this should be initialized strictly after client is define
 
-const functions = require("@modules/functions.js");
 
+/**
+ * Loading our function modules here
+ */
+const functions = require("@modules/functions.js");
 functions(client);
 
 DiscordFeaturesHandler(client, {
@@ -38,6 +41,7 @@ DiscordFeaturesHandler(client, {
   loadEventsLoggerOff: true,
   loadModulesLoggerOff: true,
   filesToExcludeInHandlers: {
+    // make sure to include the functions module file since we are pre-loading it before running this handler
     modules: ['functions.js'],
   },
   BOT_TOKEN: process.env.TOKEN

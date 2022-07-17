@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'messageDelete',
     execute(message, client) {
-        let logChannel = client.channels.cache.find(ch => ch.name === 'mod-log');
+        // find the #mod-log channel and if exists then log message that has been deleted
+        const logChannel = client.channels.cache.find(ch => ch.name === 'mod-log');
         if(!logChannel) return;
         if(message.guild != logChannel.guild) return;
 

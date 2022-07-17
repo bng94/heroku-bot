@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'messageUpdate',
     execute(oMessage, nMessage, client) {
-        let logChannel = client.channels.cache.find(ch => ch.name === 'mod-log');
+        // find the #mod-log channel and if exists then log message that has been edited
+        const logChannel = client.channels.cache.find(ch => ch.name === 'mod-log');
         if(!logChannel) return;
         if(nMessage.guild != logChannel.guild) return;
         if (nMessage.channel.name === "mod-log") return; // If message is in the admin-log channel, do nothing.

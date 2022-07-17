@@ -3,7 +3,7 @@ const directory = path.basename(__dirname);
 
 module.exports = {
 	name: 'level',
-	description: 'Tells you your permission level for the guild.',
+	description: 'Tells you your permission level for the bot.',
     category: directory,
     aliases: ['mylevel'],
 	permissions: 0,

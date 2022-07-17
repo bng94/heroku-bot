@@ -1,6 +1,4 @@
-const time = require("@modules/time.js");
 module.exports = (client) => {
-  time(client);
   /**
    * This is my own unique console log for logging message
    * @param {string} msg message to be logged

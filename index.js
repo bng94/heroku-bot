@@ -38,7 +38,7 @@ DiscordFeaturesHandler(client, {
   loadEventsLoggerOff: true,
   loadModulesLoggerOff: true,
   filesToExcludeInHandlers: {
-    modules: ['functions.js', 'spotlight.js', 'time.js'],
+    modules: ['functions.js', 'time.js'],
   },
   BOT_TOKEN: process.env.TOKEN
 });

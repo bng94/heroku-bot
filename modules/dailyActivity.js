@@ -8,9 +8,7 @@ module.exports = (client) => {
         client.holiday();
         let timeToMidnight;
         timeToMidnight = client.resetTime();
-        console.log('UTC Midnight in: '+client.timeConversion(timeToMidnight)+'\n');
-        clearTimeout(client.timer);
-        client.timer = setTimeout(daily, timeToMidnight);
+        console.log(`\nUTC Midnight in: ${client.timeConversion(timeToMidnight)}\n`);
         clearTimeout(dailyTimeOut);
         dailyTimeOut = setTimeout(daily, timeToMidnight);
     };

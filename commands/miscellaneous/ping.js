@@ -4,7 +4,7 @@ module.exports = {
     aliases: ['p'],
 	guildOnly: true,
 	permissions: 0,
-	slash: true,
+	slash: false,
 	minArgs: 0, 
 	usage: '',
 	execute(message, args, client, level) {

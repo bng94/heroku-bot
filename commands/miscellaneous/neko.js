@@ -8,7 +8,7 @@ module.exports = {
   category: directory,
   aliases: [],
   guildOnly: true,
-  slash: true,
+  slash: false,
   permissions: 0,
   minArgs: 0,
   usage: "",

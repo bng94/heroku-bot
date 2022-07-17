@@ -6,7 +6,7 @@ module.exports = {
     description: 'Hug someone with a random anime hug gifs',
     aliases: ['hugs'],
     guildOnly: true,
-    slash: true,
+    slash: false,
     slashOptions: [{
         name: 'someone',
         description: 'Mention Someone',

@@ -1,6 +1,6 @@
 {
   "name": "heroku-bot",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "The backup discord bot to my backup bot created by Brandon Ng.",
   "main": "index.js",
   "scripts": {

@@ -5,11 +5,17 @@ module.exports = {
     const guild = member.guild;
     console.log(`Someone joined ${guild.name} server!`);
 
-    let memberLog = guild.channels.cache.find((ch) => ch.name === "welcome");
+    /**
+     * Find the Welcome Channel to send a message of who joins the guild
+     */
+    const memberLog = guild.channels.cache.find((ch) => ch.name === "welcome");
     if (!memberLog) return;
 
     try {
       setTimeout(function () {
+        /**
+         * Create an Embed Message that is ready to send when a user joins the guild!
+         */
         const embed = new Discord.MessageEmbed()
           .setColor(0x34f937)
           .setAuthor({

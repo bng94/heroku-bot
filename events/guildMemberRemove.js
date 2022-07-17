@@ -4,9 +4,15 @@ module.exports = {
   execute(member, client) {
     const guild = member.guild;
     console.log(`Someone left ${guild.name} server!`);
-    let memberLog = guild.channels.cache.find((ch) => ch.name === "welcome");
+    /**
+     * Find the Welcome Channel to send a message of who left the guild
+     */
+    const memberLog = guild.channels.cache.find((ch) => ch.name === "welcome");
     if (!memberLog) return;
 
+    /**
+     * Create an Embed Message that is ready to send when a user left the guild!
+     */
     const embed = new Discord.MessageEmbed()
       .setColor(0xff0300)
       .setAuthor({

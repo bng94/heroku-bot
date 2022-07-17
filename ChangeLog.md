@@ -1,6 +1,12 @@
 # ChangeLog
 All notable changes to this project will be documented below.
 
+## [4.1.1] - 2022-07-17
+* Fix:
+  * Removed non-basic commands 
+    * Commands that looks very complicated to understand unless created it yourself
+  * Add more comments and jsdoc, so developers can understand what the file does
+  * Removed functions that aren't useful for those using it as a basic bot.
 ## [4.1.0] - 2022-07-17
 * Feat: Updated DiscordFeaturesHandler to v1.1.0
   * Removed messageCreate.js, interactionCreate.js, and slashCmds.js event files and use handler instead

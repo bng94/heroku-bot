@@ -51,15 +51,15 @@ module.exports = (client) => {
     if (client.firstHourOfDay() === true) {
       today.setHours(0, 0, 0, 0);
       if (today === newsYear) {
-        client.channels.cache.find(ch => ch.id === '388777996292456448').send("Happy New Years!");
+        console.log('Happy New Years');
       } else if (today === fourthOfJuly) {
-        client.channels.cache.find(ch => ch.id === '388777996292456448').send("Happy 4th of July!");
+        console.log('Happy 4th of July!');
       } else if (today === halloween) {
-        client.channels.cache.find(ch => ch.id === '388777996292456448').send("Happy Halloween!");
+        console.log('Happy Halloween!');
       } else if (today === thanksgiving && thanksFound === true) {
-        client.channels.cache.find(ch => ch.id === '388777996292456448').send("Happy Thanksgiving!");
+        console.log('Happy Thanksgiving!');
       } else if (today === christmas) {
-        client.channels.cache.find(ch => ch.id === '388777996292456448').send("Happy Christmas!");
+        console.log('Happy Christmas!');
       }
     }
   };

@@ -1,6 +1,12 @@
 const time = require("@modules/time.js");
 module.exports = (client) => {
   time(client);
+  /**
+   * This is my own unique console log for logging message
+   * @param {string} msg message to be logged
+   * @param {string} title title of the log, if title is a boolean value of true then its an error log
+   * @param {string} type what type of log is this
+   */
   client.log = (msg, title = false, type = "log") => {
       if(title === true){
           console.log(`========== ERROR ==========`);
@@ -13,6 +19,12 @@ module.exports = (client) => {
       } 
   };
   
+  /**
+   * This is used to send the bot owner a specific message
+   * I use this to send myself a message when the bot reboots, startup or a specific error occurs
+   * @param {string} msg message to sent to bot owner
+   * @returns 
+   */
   client.sendOwnerMsg = async (msg) =>{
       const owner = await client.users.fetch(client.config.ownerID);
           return owner.send({
@@ -20,6 +32,13 @@ module.exports = (client) => {
           });
   };  
   
+  /**
+   * 
+   * @param {Message} msg the message object used to send a message
+   * @param {string} question the question to ask and await for a response
+   * @param {number} limit The time limit to wait for a response
+   * @returns 
+   */
   client.awaitReply = async (msg, question, limit = 60000) => {
     const filter = m=>m.author.id === msg.author.id;
     await msg.channel.send(question);

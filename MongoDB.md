@@ -1,7 +1,7 @@
 # MongoDB Configuration
 
 ## About
-This is for configuration of my restart msg connected to MongoDB. Currently not used in my Heroku Discord Bot, as it requires an IP Address from Heroku. Below I will describe the set up to get a MongoDB onto your discord bot, with my previous setup now removed for future builds of this Heroku hosted bot. 
+This is for configuration of my restart msg connected to MongoDB. Currently not used in this Heroku Discord Bot, as it requires an IP Address from Heroku. Below I will describe the set up to get a MongoDB onto your discord bot, with my previous setup now removed for future builds of this Heroku hosted bot. 
 
 > The below setup is for mongoose v6.1.5
 > 

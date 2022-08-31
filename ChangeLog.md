@@ -1,6 +1,9 @@
 # ChangeLog
 All notable changes to this project will be documented below.
 
+## [4.2.1] - 2022-07-17
+* Update Discord-features-handler v1.1.1
+* Updates Discord.js v13.10.3
 ## [4.1.1] - 2022-07-17
 * Fix:
   * Removed non-basic commands 

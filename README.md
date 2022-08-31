@@ -1,9 +1,10 @@
 # Heroku Discord Bot
-A discord.js backup bot of my backup bot. Originally was planning to create one bot but ended up creating another bot then this one. This bot is hosted on heroku for free and as such will run 24/7 for 23 days a month.
+A discord.js backup bot of my backup bot. This was primarily a backup bot of a bot called "Doctor" on my server and will be planning to make this bot called "Master" in references to the BBC TV Show Doctor Who. Now will be focused towards a demo bot for my npm packaged called Discord-Features-Handler.
 
 # Description
-This is primarily a backup bot of a bot called "Doctor" on my server and will be planning to make this bot called "Master" in references to the BBC TV Show Doctor Who. This is a generic bot for everyone to download and use. This bot is flexible to be used amd hosted on heroku server or other free hosting services. Since the creation of my DiscordFeaturesHandler npm package, I am converting this more geared as a demo bot for those interested in looking at a basic Discord.js bot setup with the package. Please give this repository or DiscordFeaturesHandler repository a star if you like what you see and want to see the more of these type of projects!
+ This is a generic bot for everyone to download and use. Since the creation of my DiscordFeaturesHandler npm package, I am converting this more geared as a demo bot for those interested in looking at a basic Discord.js bot setup with the package. Please give this repository or DiscordFeaturesHandler repository a star if you like what you see and want to see the more of these type of projects!
 
+(Note: Heroku is stopping all free service starting Nov 28, 2022 and requires paid plans to continue services)
 # Installation
 
 If you clone or forked my repository make sure to run:

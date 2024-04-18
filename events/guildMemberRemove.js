@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 module.exports = {
   name: "guildMemberRemove",
   execute(member, client) {
@@ -13,7 +13,7 @@ module.exports = {
     /**
      * Create an Embed Message that is ready to send when a user left the guild!
      */
-    const embed = new Discord.MessageEmbed()
+    const embed = new EmbedBuilder()
       .setColor(0xff0300)
       .setAuthor({
         name: `${member.user.tag} (${member.user.id})`,

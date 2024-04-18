@@ -1,6 +1,12 @@
 # ChangeLog
 All notable changes to this project will be documented below.
 
+## [5.0.0] - 2024-04-17
+* Update to Discord.js v14.14.1
+* Update to Discord-features-handler#dev v2.0.0 - PreLaunch
+* New method to handle discord slash command and deleting them.
+* TypeScript version of this bot in the TypeScript Branch.
+
 ## [4.2.1] - 2022-07-17
 * Update Discord-features-handler v1.1.1
 * Updates Discord.js v13.10.3

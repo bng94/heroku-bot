@@ -2,47 +2,52 @@ require("module-alias/register");
 require("dotenv").config();
 
 const DiscordFeaturesHandler = require("discord-features-handler");
-const { Client, Intents } = require("discord.js");
+const functions = require("@modules/functions.js");
+const { Client, GatewayIntentBits, Partials } = require("discord.js");
 
 // I just pass in majority of the Intents incase I do use them along the way
 // It is conventional to pass in only the intents + partials for your use cases
 const client = new Client({
   intents: [
-    Intents.FLAGS.GUILDS,
-    Intents.FLAGS.GUILD_MEMBERS,
-    Intents.FLAGS.GUILD_BANS,
-    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-    Intents.FLAGS.GUILD_MESSAGES,
-    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-    Intents.FLAGS.DIRECT_MESSAGES,
-    Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildEmojisAndStickers,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMessageTyping,
+    GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.GuildModeration,
+    GatewayIntentBits.GuildScheduledEvents,
+    GatewayIntentBits.GuildPresences,
+    GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.DirectMessageReactions,
+    GatewayIntentBits.DirectMessageTyping,
+    GatewayIntentBits.MessageContent,
   ],
-  partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
-  
+  partials: [Partials.Channel, Partials.Channel, Partials.Reaction],
 });
 //this should be initialized strictly after client is define
-
 
 /**
  * Loading our function modules here
  */
-const functions = require("@modules/functions.js");
 functions(client);
 
 DiscordFeaturesHandler(client, {
-  mainDirectory: __dirname,
-  config: './config.js',
-  disableBuiltIn: {
+  config: "./config.js",
+  directories: {
+    main: __dirname,
+  },
+  builtin_files: {
     commands: {
       help: true,
-    }
+    },
   },
-  loadCommandsLoggerOff: true,
-  loadEventsLoggerOff: true,
-  loadModulesLoggerOff: true,
+  onLoad_list_files: {
+    commands: true,
+    events: true,
+    modules: true,
+  },
   filesToExcludeInHandlers: {
-    // make sure to include the functions module file since we are pre-loading it before running this handler
-    modules: ['functions.js'],
+    modules: ["functions.js"],
   },
-  BOT_TOKEN: process.env.TOKEN
 });

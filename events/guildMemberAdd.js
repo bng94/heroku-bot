@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 module.exports = {
   name: "guildMemberAdd",
   execute(member, client) {
@@ -16,11 +16,11 @@ module.exports = {
         /**
          * Create an Embed Message that is ready to send when a user joins the guild!
          */
-        const embed = new Discord.MessageEmbed()
+        const embed = new EmbedBuilder()
           .setColor(0x34f937)
           .setAuthor({
             name: `${member.user.tag} (${member.user.id})`,
-            iconURL: `${member.user.displayAvatarURL}`
+            iconURL: `${member.user.displayAvatarURL}`,
           })
           .setTimestamp()
           .setFields({

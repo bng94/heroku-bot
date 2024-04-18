@@ -1,6 +1,6 @@
 const { version } = require("discord.js");
 const pack = require("@root/package.json");
-const Discord = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "about",
@@ -11,7 +11,7 @@ module.exports = {
   minArgs: 0,
   usage: "",
   execute(message, args, client) {
-    const embed = new Discord.MessageEmbed()
+    const embed = new EmbedBuilder()
       .setColor(0x800000)
       .setThumbnail(`${client.user.avatarURL()}`)
       .setTitle(`About Me`)
@@ -26,7 +26,7 @@ module.exports = {
           name: `Library:`,
           value: `Discord.js v${version}\nNode ${process.version}`,
           inline: true,
-        }
+        },
       ]);
 
     try {

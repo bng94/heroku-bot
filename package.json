@@ -1,6 +1,6 @@
 {
   "name": "heroku-bot",
-  "version": "5.0.0",
+  "version": "0.0.0",
   "description": "The demo discord bot for my discord-features-handler npm package.",
   "main": "index.js",
   "scripts": {

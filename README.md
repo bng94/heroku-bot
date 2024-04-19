@@ -36,10 +36,11 @@ OWNER_ID="Your Discord User Id"
 CLIENT_ID="You bot client Id"
 DEVELOPMENT_GUILD_ID="optional: Your development guild Id for testing slash commands"
 ```
+You can find your bot Client Id: ([Discord Developer Portal](https://discord.com/developers/applications) > "General Information" > application id)
 
 You can access these variables using `process.env.YOUR_VARIABLE_NAME`.
 
-> Example: `process.env.DISCORD_TOKEN`
+> `process.env.DISCORD_TOKEN`
 
 
 ## Starting up the bot:
@@ -119,13 +120,13 @@ module.exports = {
 You can learn more by reading the [Discord Dev Docs](https://discord.com/developers/docs/interactions/slash-commands) about Slash Commands.
 
 ## Deleting Slash Commands
-In your config file you can enter the slash command Id you want to delete into the `toDeleteSlashCommandId` property. If you want to delete all type in the word "all". You **MUST** delete this property after the command(s) is deleted otherwise it will delete again upon restarting your bot.
+In your config file you can enter the slash command Id you want to delete into the `toDeleteSlashCommand` property. If you want to delete all type in the boolean: `true`. You **MUST** delete this property after the your restarting of your bot otherwise it will delete the command(s) again upon restarting your bot.
 
 ### Example:
 ```javascript
 //config.js
 {
-	toDeleteSlashCommandId: "123456789" // "all"
+	toDeleteSlashCommand: "123456789" // "all"
 }
 ```
 

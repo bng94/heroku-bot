@@ -1,5 +1,7 @@
 # Heroku Discord Bot
+### TypeScript Edition!
 A Discord.js demo bot for my npm package called Discord-Features-Handler.
+
 
 ## Description
 This is a generic bot for everyone to download and use. Since the creation of my DiscordFeaturesHandler npm package, I am converting this to be more geared towards a demo bot for those interested in a basic Discord.js bot setup with the package. Originally, it was a bot hosted on Heroku but has been converted into a demo bot.
@@ -13,20 +15,29 @@ If you clone or fork my repository, make sure to run:
 ```bash
  npm install
 ```
-## Create your Environment variables file
 
-This file is called .env and should be in the same parent folder as your index.js file
+## TypeScript Folder Structure
+you will need to create a src folder and bot related files
 ```
 discord-bot/
-├── commands/
-├── events/
-├── modules/
-├── node_modules
+├── node_modules/
+├── src/
+│   ├── commands/
+│   ├── events/
+│   ├── modules/
+│   ├── types/
+│   │    └── index.d.ts
+│   ├── config.ts
+│   └── index.ts
 ├── .env
-├── config.js
-├── index.js
 ├── package-lock.json
-└── package.json
+├── package.json
+└── tsconfig.json
+
+
+## Create your Environment variables file
+
+This file is called .env and should be in the same parent folder as your index.ts file
 ```
 
 > ⚠ **Warning:** The .env file must never be shared with anyone or uploaded to your public repository. You should use a .gitignore file to avoid accidentally uploading the file to GitHub!
@@ -42,14 +53,48 @@ You can access these variables using `process.env.YOUR_VARIABLE_NAME`.
 
 > `process.env.DISCORD_TOKEN`
 
+## tsconfig.json file:
+```json
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "typeRoots": ["./src/types"],
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true
+  }
+}
+```
 
 ## Starting up the bot:
-Use one of the following commands in your terminal to start the bot:
 
-* `npm start` or `Node index.js`
-* `pm2 start index.js`
+* Run the following command first before starting the bot
+in development mode:
+```bash
+npm run dev
+```
+in prod:
+```bash
+ npm run build
+```
+then
+```bash
+npm run start
+```
+or 
+**if you choose to use pm2**
+```bash
+npm run prod 
+```
 
-*Recommended to use pm2 start if you want the bot to run 24/7, and restart if it crashes or encounters a bug. Also able to restarts upon using the restart command*
+*During development, any file changes then the bot will automatically restart*
 
 ## Creating Commands 
 
@@ -67,7 +112,9 @@ Command files must contain the following properties:
 - `usage`: define what the arguments should be, if any. If none, use `usage: ''`.
 - `execute`: the functionality and response of the command call.
 ### Example:
-```JavaScript
+```TypeScript
+import { Client, Message } from "discord.js";
+
 module.exports = {
 	name: 'ping',
 	description: 'Ping Pong Command!',
@@ -76,7 +123,7 @@ module.exports = {
 	permissions: 0,
 	minArgs: 0, 
 	usage: '',
-	execute(message, args, client) {
+	execute(message: Message, args: string[], client: Client) {
 		return message.channel.send('Pong.');
 	},
 };
@@ -85,15 +132,17 @@ module.exports = {
 ## Creating Slash Commands
 You can create slash commands by using discord.js SlashCommandBuilder.
 ### Objects:
-```javascript
-const { SlashCommandBuilder } = require("discord.js");
+```TypeScript
+import { SlashCommandBuilder } from "discord.js";
+
 
 data: new SlashCommandBuilder().setName("").setDescription("),
 async interactionReply(interaction) {},
 ```
 ### Example:
 ```javascript
-const { SlashCommandBuilder } = require("discord.js");
+import { Client, Interaction, Message, SlashCommandBuilder } from "discord.js";
+
 
 module.exports = {
 	name: 'ping',
@@ -106,10 +155,10 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("ping")
 		.setDescription("Ping Pong Command"),
-	execute(message, args, client) {
+  execute(message: Message, args: string[], client: Client) {
 		return message.channel.send('Pong.');
 	},
-	async interactionReply(interaction) {
+	async interactionReply(interaction: Interaction) {
 		await interaction.reply({
 			content: 'Pong!'
 		});
@@ -123,10 +172,10 @@ You can learn more by reading the [Discord Dev Docs](https://discord.com/develop
 In your config file you can enter the slash command Id you want to delete into the `toDeleteSlashCommand` property. If you want to delete all type in the boolean: `true`. You **MUST** delete this property after the your restarting of your bot otherwise it will delete the command(s) again upon restarting your bot.
 
 ### Example:
-```javascript
-//config.js
+```TypeScript
+//config.ts
 {
-	toDeleteSlashCommand: "123456789" // "all"
+	toDeleteSlashCommand: "123456789" 
 }
 ```
 
@@ -137,11 +186,13 @@ In your config file you can enter the slash command Id you want to delete into t
 - execute - the functionality and response of the discord event when triggered.
 
 Example:
-```javascript
+```TypeScript
+import { Client, Events } from "discord.js";
+
 module.exports = {
-  name: "ready",
+  name: Events.ClientReady,
   once: true,
-  async execute(client) {
+  execute(client: Client) {
       console.log('Bot just started!');
   },
 };

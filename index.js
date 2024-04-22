@@ -1,8 +1,8 @@
 require("module-alias/register");
 require("dotenv").config();
 
-const DiscordFeaturesHandler = require("discord-features-handler");
-const functions = require("@modules/functions.js");
+const functions = require("./modules/functions.js");
+const { DiscordFeaturesHandler } = require("discord-features-handler");
 const { Client, GatewayIntentBits, Partials } = require("discord.js");
 
 // I just pass in majority of the Intents incase I do use them along the way

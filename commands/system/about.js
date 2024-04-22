@@ -1,5 +1,5 @@
 const { version } = require("discord.js");
-const pack = require("@root/package.json");
+const pack = require("../../package.json");
 const { EmbedBuilder } = require("discord.js");
 
 module.exports = {

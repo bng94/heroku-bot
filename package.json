@@ -2,8 +2,7 @@
   "name": "heroku-bot",
   "version": "0.0.0",
   "description": "The demo discord bot for my discord-features-handler npm package.",
-  "main": "src/index.ts",
-  "types": "src/index.d.ts",
+  "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "dev": "tsx watch src/index.ts",
@@ -21,7 +20,7 @@
   },
   "homepage": "https://github.com/bng94/heroku-bot#readme",
   "dependencies": {
-    "discord-features-handler": "^2.0.1",
+    "discord-features-handler": "^2.0.2",
     "discord.js": "^14.14.1",
     "dotenv": "^10.0.0",
     "moment": "^2.29.1",

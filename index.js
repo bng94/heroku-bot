@@ -1,4 +1,3 @@
-require("module-alias/register");
 require("dotenv").config();
 
 const functions = require("./modules/functions.js");

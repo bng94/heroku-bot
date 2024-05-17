@@ -8,7 +8,6 @@ import {
   ButtonBuilder,
   EmbedBuilder,
   ButtonStyle,
-  MessageComponentInteraction,
 } from "discord.js";
 
 const filterTime = 60000;

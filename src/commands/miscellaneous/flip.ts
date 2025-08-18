@@ -10,7 +10,7 @@ module.exports = {
   permissions: 0,
   minArgs: 0,
   usage: "flip",
-  execute(message: Message) {
+  executePrefix(message: Message) {
     const flipResult =
       Math.floor(Math.random() * 2) == 0 ? "**HEADS**" : "**TAILS**";
     const embed = new EmbedBuilder()

@@ -123,7 +123,7 @@ module.exports = {
 	permissions: 0,
 	minArgs: 0, 
 	usage: '',
-	execute(message: Message, args: string[], client: Client) {
+	executePrefix(message: Message, args: string[], client: Client) {
 		return message.channel.send('Pong.');
 	},
 };
@@ -155,7 +155,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("ping")
 		.setDescription("Ping Pong Command"),
-  execute(message: Message, args: string[], client: Client) {
+  executePrefix(message: Message, args: string[], client: Client) {
 		return message.channel.send('Pong.');
 	},
 	async interactionReply(interaction: Interaction) {

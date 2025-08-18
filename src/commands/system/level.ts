@@ -7,7 +7,12 @@ module.exports = {
   permissions: 0,
   minArgs: 0,
   usage: "",
-  execute(message: Message, args: string[], client: Client, level: number) {
+  executePrefix(
+    message: Message,
+    args: string[],
+    client: Client,
+    level: number
+  ) {
     const title = client.config?.permissions?.find(
       (l) => l.level === level
     )?.name;

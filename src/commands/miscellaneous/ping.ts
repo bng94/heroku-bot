@@ -11,7 +11,7 @@ module.exports = {
     .setDescription("Ping Pong Command"),
   minArgs: 0,
   usage: "",
-  execute(message: Message, args: string[], client: Client) {
+  executePrefix(message: Message, args: string[], client: Client) {
     message.channel.send("Calculating...").then((resultMessage) => {
       const ping = resultMessage.createdTimestamp - message.createdTimestamp;
 
@@ -20,7 +20,7 @@ module.exports = {
       );
     });
   },
-  async interactionReply(interaction: Interaction, client: Client) {
+  async execute(interaction: Interaction, client: Client) {
     if (!interaction.isCommand()) return;
     await interaction.deferReply();
     await client.wait(3000);

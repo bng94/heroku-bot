@@ -10,7 +10,7 @@ module.exports = {
   permissions: 4,
   minArgs: 1,
   usage: "<#>",
-  execute(message: Message, args: string[], client: CustomClient) {
+  executePrefix(message: Message, args: string[], client: CustomClient) {
     let amount = parseInt(args[0]);
     if (isNaN(amount) || amount <= 0) {
       return message.channel.send(

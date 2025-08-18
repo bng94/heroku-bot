@@ -2,7 +2,7 @@ import { ChannelType, Client, EmbedBuilder, Events, Message } from "discord.js";
 
 module.exports = {
   name: Events.MessageDelete,
-  execute(message: Message, client: Client) {
+  executePrefix(message: Message, client: Client) {
     // find the #mod-log channel and if exists then log message that has been deleted
     const logChannel = client.channels.cache.find(
       (ch) => ch.type === ChannelType.GuildText && ch.name === "mod-log"

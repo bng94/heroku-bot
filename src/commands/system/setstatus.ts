@@ -13,7 +13,7 @@ module.exports = {
   permissions: 10,
   minArgs: 1,
   usage: "<on|idle|invisible|dnd>",
-  async execute(message: Message, args: string[], client: Client) {
+  async executePrefix(message: Message, args: string[], client: Client) {
     let newStatus = args.join(" ") as keyof typeof status;
     const status: {
       on: PresenceStatusData;

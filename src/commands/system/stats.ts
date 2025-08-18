@@ -10,7 +10,7 @@ module.exports = {
   permissions: 0,
   usage: "",
   minArgs: 0,
-  execute(message: Message, args: string[], client: Client) {
+  executePrefix(message: Message, args: string[], client: Client) {
     const duration = moment.duration(client.uptime).asDays();
     message.channel.send({
       content: `= STATISTICS =

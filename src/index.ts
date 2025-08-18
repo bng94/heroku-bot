@@ -5,6 +5,13 @@ import { Client, GatewayIntentBits, Partials } from "discord.js";
 import CustomClient, { functions } from "./utils/clientUtils";
 import { DiscordFeaturesHandler } from "discord-features-handler";
 
+/**
+ * If you are using Node v22 or later
+ * uncomment these
+ */
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+
 // I just pass in majority of the Intents incase I do use them along the way
 // It is conventional to pass in only the intents + partials for your use cases
 const client = new Client({

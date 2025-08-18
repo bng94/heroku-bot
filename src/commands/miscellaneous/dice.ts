@@ -10,7 +10,7 @@ module.exports = {
   permissions: 0,
   minArgs: 0,
   usage: "dice",
-  execute(message: Message) {
+  executePrefix(message: Message) {
     const dieResult = Math.floor(Math.random() * 6) + 1;
     const embed = new EmbedBuilder()
       .setTimestamp()

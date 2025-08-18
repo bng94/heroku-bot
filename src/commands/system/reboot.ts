@@ -8,7 +8,7 @@ module.exports = {
   permissions: 8,
   minArgs: 0,
   usage: "",
-  async execute(message: Message, args: string[], client: Client) {
+  async executePrefix(message: Message, args: string[], client: Client) {
     message.channel.send("Restarting...");
 
     client.commands.forEach(async (cmd) => {

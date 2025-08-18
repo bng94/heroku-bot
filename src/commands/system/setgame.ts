@@ -8,7 +8,7 @@ module.exports = {
   permissions: 10,
   minArgs: 1,
   usage: "<action>",
-  execute(message: Message, args: string[], client: Client) {
+  executePrefix(message: Message, args: string[], client: Client) {
     let action = message.content.split(" ").slice(1).join(" ");
     client.user?.setActivity(action);
   },

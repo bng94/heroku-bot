@@ -96,7 +96,7 @@ npm run prod
 
 *During development, any file changes then the bot will automatically restart*
 
-## Creating Commands 
+## Creating Prefix Commands 
 
 > ⚠ **NOTE:**  The following setup is based on the discord-features-handler package. We are using this package to handle our discord events, setting up commands and slash commands, as well as our modules files. You can read more about the package in the DiscordFeaturesHandler Documentation.
 
@@ -104,13 +104,13 @@ Command files must contain the following properties:
 
 - `name`: name of the command.
 - `description`: description of the command.
-- `aliases`: command aliases. If none, define it as `aliases: []`.
+- *(OPTIONAL)* `aliases`: command aliases. If none, define it as `aliases: []`.
 - *(OPTIONAL)* `guildOnly`: set to true if it's a guild-only command.
-- `permission`: the defined permission level to use the command. Check `config.js` for more details.
-- `minArgs`: defines the minimum number of arguments required for the command. If no args, use `minArgs: 0`.
+- *(OPTIONAL)* `permission`: the defined permission level to use the command. Check `config.js` for more details.
+- *(OPTIONAL)* `minArgs`: defines the minimum number of arguments required for the command. If no args, use `minArgs: 0`.
 - *(OPTIONAL)* `maxArgs`: define the maximum number of arguments required. Leave blank for unlimited arguments or for a sentence-length answer.
-- `usage`: define what the arguments should be, if any. If none, use `usage: ''`.
-- `execute`: the functionality and response of the command call.
+- *(OPTIONAL)* `usage`: define what the arguments should be, if any. If none, use `usage: ''`.
+- `executePrefix`: the functionality and response of the command call.
 ### Example:
 ```TypeScript
 import { Client, Message } from "discord.js";
@@ -120,9 +120,6 @@ module.exports = {
 	description: 'Ping Pong Command!',
 	aliases: ['p'],
 	guildOnly: true,
-	permissions: 0,
-	minArgs: 0, 
-	usage: '',
 	executePrefix(message: Message, args: string[], client: Client) {
 		return message.channel.send('Pong.');
 	},
@@ -137,7 +134,7 @@ import { SlashCommandBuilder } from "discord.js";
 
 
 data: new SlashCommandBuilder().setName("").setDescription("),
-async interactionReply(interaction) {},
+async execute(interaction) {},
 ```
 ### Example:
 ```javascript
@@ -149,16 +146,13 @@ module.exports = {
 	description: 'Ping Pong Command!',
 	aliases: ['p'],
 	guildOnly: true,
-	permissions: 0,
-	minArgs: 0, 
-	usage: '',
 	data: new SlashCommandBuilder()
 		.setName("ping")
 		.setDescription("Ping Pong Command"),
   executePrefix(message: Message, args: string[], client: Client) {
 		return message.channel.send('Pong.');
 	},
-	async interactionReply(interaction: Interaction) {
+	async execute(interaction: Interaction) {
 		await interaction.reply({
 			content: 'Pong!'
 		});
@@ -169,14 +163,18 @@ module.exports = {
 You can learn more by reading the [Discord Dev Docs](https://discord.com/developers/docs/interactions/slash-commands) about Slash Commands.
 
 ## Deleting Slash Commands
-In your config file you can enter the slash command Id you want to delete into the `toDeleteSlashCommand` property. If you want to delete all type in the boolean: `true`. You **MUST** delete this property after the your restarting of your bot otherwise it will delete the command(s) again upon restarting your bot.
+In your config file you can enter the slash command Id you want to delete into the `slashCommandIdsToDelete` property in the main DiscordFeaturesHandler object
 
 ### Example:
-```TypeScript
-//config.ts
-{
-	toDeleteSlashCommand: "123456789" 
-}
+```typescript
+DiscordFeaturesHandler(client, {
+	// ...
+	slashCommandIdsToDelete: {
+		global: [], // ["123"]
+		guild: [], // ["234"]
+	},
+});
+
 ```
 
 

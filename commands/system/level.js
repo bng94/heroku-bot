@@ -5,7 +5,7 @@ module.exports = {
   permissions: 0,
   minArgs: 0,
   usage: "",
-  execute(message, args, client, level) {
+  executePrefix(message, args, client, level) {
     const title = client.config.permissions.find((l) => l.level === level).name;
     message.reply(`Your permission level is: ${level} - ${title}`);
   },

@@ -8,7 +8,7 @@ module.exports = {
   permissions: 0,
   minArgs: 0,
   usage: "dice",
-  execute(message, args, client) {
+  executePrefix(message, args, client) {
     const dieResult = Math.floor(Math.random() * 6) + 1;
     const embed = new EmbedBuilder()
       .setTimestamp()

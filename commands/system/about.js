@@ -10,7 +10,7 @@ module.exports = {
   permissions: 0,
   minArgs: 0,
   usage: "",
-  execute(message, args, client) {
+  executePrefix(message, args, client) {
     const embed = new EmbedBuilder()
       .setColor(0x800000)
       .setThumbnail(`${client.user.avatarURL()}`)

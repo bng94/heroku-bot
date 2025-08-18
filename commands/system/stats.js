@@ -9,7 +9,7 @@ module.exports = {
   permissions: 0,
   usage: "",
   minArgs: 0,
-  execute(message, args, client) {
+  executePrefix(message, args, client) {
     const duration = moment
       .duration(client.uptime)
       .format(" D [days], H [hrs], m [mins], s [secs]");
